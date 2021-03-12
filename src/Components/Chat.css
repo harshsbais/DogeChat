@@ -1,0 +1,34 @@
+.chatBox{
+    background-image: url('https://blog.1a23.com/wp-content/uploads/sites/2/2020/02/Desktop.png');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color:white;
+    padding: 3vh 10vh 10vh 10vh;
+}
+.chatBox .user-msg{
+        width: 15vw;
+        min-width: 100px;
+        padding: 10px;
+        margin: 20px 0px;
+        box-shadow: rgba(232, 236, 5, 0.507) 1px 1px 6px 2px !important;
+        border-radius: 5px 20px;
+}
+.chatBox .my-msg{
+        transform: translateX(75vw);
+        width: 15vw;
+        padding: 10px;
+        margin: 20px 0px;
+        box-shadow: rgba(59, 236, 5, 0.445) 1px 1px 6px 2px !important;
+        border-radius: 20px 5px;
+}
+.footer {
+        margin-top: 10px;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        height: 10vh;
+        width: 100vw;
+        background-color: black;
+        text-align: center;
+}
