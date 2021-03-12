@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
+import { bake_cookie, read_cookie } from 'sfcookies';
 function UserInfo(props) {
     const [user, setUser] = useState('');
     const setUserInfo = (e) => {
         e.preventDefault();
-        console.log(user);
+        bake_cookie('userName', user);
         props.onHide();
     }
     return (
