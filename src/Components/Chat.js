@@ -1,9 +1,14 @@
-import React from 'react'
-
+import React, { useState } from 'react'
+import UserInfo from './UserInfo'
 function Chat() {
+    const [modalShow, setModalShow] = useState(true);
     return (
         <div>
-            Hello World
+            <UserInfo
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
+            Chat Box
         </div>
     )
 }
