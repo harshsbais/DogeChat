@@ -25,7 +25,7 @@ function Chat() {
 
             <div className='footer'>
                 <input className="mt-4" style={{ width: '70%' }} />
-                <Button className="ml-4"><i className="fa fa-arrow-right"></i></Button>
+                <button className="ml-4" style={{ backgroundColor: 'black', color: 'white', border: 'none' }}><i className="fa fa-arrow-right"></i></button>
             </div>
         </div >
     )
