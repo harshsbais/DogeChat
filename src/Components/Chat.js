@@ -24,7 +24,7 @@ function Chat() {
         setMessage(mess);
         console.log(message);
         db.collection("messages").add(message);
-        setMessage({ content: '' });
+        setMessage({});
     }
     const handleChange = (e) => {
         setMessage({ ...message, [e.target.name]: e.target.value });
@@ -77,7 +77,7 @@ function Chat() {
             </div >
             <div className='footer'>
                 <Form onSubmit={handleSubmit}>
-                    <input className="mt-4" required value={content} name='content' onChange={handleChange} style={{ width: '70%' }} />
+                    <input className="mt-4" required value={content ?? ''} name='content' onChange={handleChange} style={{ width: '70%' }} />
                     <button className="ml-4" style={{ backgroundColor: 'black', color: 'white', border: 'none' }} type="submit"><i className="fa fa-arrow-right"></i></button>
                 </Form>
             </div>
