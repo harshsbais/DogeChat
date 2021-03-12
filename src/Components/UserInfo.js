@@ -5,8 +5,8 @@ function UserInfo(props) {
     const [user, setUser] = useState('');
     const setUserInfo = (e) => {
         e.preventDefault();
-        // bake_cookie('userName', user);
-        // bake_cookie('userID', new Date().getTime().toString());
+        bake_cookie('userName', user);
+        bake_cookie('userID', new Date().getTime().toString());
         props.onHide();
     }
     return (

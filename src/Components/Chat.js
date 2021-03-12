@@ -21,8 +21,12 @@ function Chat() {
             <nav class="navbar navbar-expand-lg navbar-light bg-white">
                 <p className='mx-auto pt-1' style={{ fontSize: '40px', fontFamily: "'Redressed', cursive" }}>Global Chat</p>
             </nav>
-
-
+            <p className="user-msg">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <p className="my-msg">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
             <div className='footer'>
                 <input className="mt-4" style={{ width: '70%' }} />
                 <button className="ml-4" style={{ backgroundColor: 'black', color: 'white', border: 'none' }}><i className="fa fa-arrow-right"></i></button>
