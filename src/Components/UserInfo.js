@@ -6,6 +6,7 @@ function UserInfo(props) {
     const setUserInfo = (e) => {
         e.preventDefault();
         bake_cookie('userName', user);
+        bake_cookie('userID', new Date().getTime().toString());
         props.onHide();
     }
     return (
@@ -17,7 +18,7 @@ function UserInfo(props) {
             <Modal.Body>
                 <Form onSubmit={setUserInfo}>
                     <label htmlFor='user'>Enter Your Name</label>
-                    <input className="ml-3" name='user' value={user} onChange={(e) => setUser(e.target.value)} name="name" />
+                    <input className="ml-3" name='user' value={user} onChange={(e) => setUser(e.target.value)} />
                     <Button className="ml-3" type="submit">Submit</Button>
                 </Form>
             </Modal.Body>

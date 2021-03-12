@@ -5,7 +5,8 @@ function Chat() {
     const [modalShow, setModalShow] = useState(true);
     useEffect(() => {
         console.log(read_cookie('userName'));
-        if (read_cookie('userName')) {
+        console.log(read_cookie('userID'));
+        if (read_cookie('userName').length !== 0) {
             setModalShow(false);
         }
     }, [])
