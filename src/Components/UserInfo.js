@@ -19,7 +19,7 @@ function UserInfo(props) {
                 <Form onSubmit={setUserInfo}>
                     <label htmlFor='user'>Enter Your Name</label>
                     <input className="ml-3" name='user' value={user} onChange={(e) => setUser(e.target.value)} />
-                    <Button className="ml-3" type="submit">Submit</Button>
+                    <Button className="ml-3" type="submit"><i className="fa fa-arrow-right pb-1"></i></Button>
                 </Form>
             </Modal.Body>
         </Modal>
