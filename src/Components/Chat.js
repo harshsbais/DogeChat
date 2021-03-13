@@ -56,34 +56,18 @@ function Chat() {
                 <nav className="navbar">
                     <p className='mx-auto pt-1 navbar-inner' style={{ fontSize: '40px', fontFamily: "'Redressed', cursive" }}>Global Chat</p>
                 </nav>
-                {console.log(messages)}
                 {messages.map((msg, idx) => {
-                    if (msg.userID === read_cookie('userID')) {
-                        return (
-                            <Row style={{ width: '100%' }} key={idx}>
-                                <div className="my-msg">
-                                    <p style={{ color: 'orange' }}>{msg.name}</p>
-                                    <p>{msg.content}</p>
-                                    <p style={{ color: 'orange' }}>
-                                        {parseInt((new Date().getTime().toString() - msg.time) / 60000)} min ago
+                    return (
+                        <Row style={{ width: '100%' }} key={idx}>
+                            <div className={`msg ${(msg.userID === read_cookie('userID')) ? 'my-msg' : ''}`}>
+                                <p style={{ color: 'orange' }}>{msg.name}</p>
+                                <p>{msg.content}</p>
+                                <p style={{ color: 'orange' }}>
+                                    {parseInt((new Date().getTime().toString() - msg.time) / 60000)} min ago
                                     </p>
-                                </div>
-                            </Row>
-                        )
-                    }
-                    else {
-                        return (
-                            <Row style={{ width: '100%' }} key={idx}>
-                                <div className="user-msg">
-                                    <p style={{ color: 'orange' }}>{msg.name}</p>
-                                    <p>{msg.content}</p>
-                                    <p style={{ color: 'orange' }}>
-                                        {parseInt((new Date().getTime().toString() - msg.time) / 60000)} min ago
-                                    </p>
-                                </div>
-                            </Row>
-                        )
-                    }
+                            </div>
+                        </Row>
+                    )
                 })
                 }
             </div >

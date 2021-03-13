@@ -6,7 +6,7 @@
     color:white;
     padding: 3vh 10vh 10vh 10vh;
 }
-.chatBox .user-msg{
+.chatBox .msg{
         width: 15vw;
         min-width: 100px;
         padding: 10px;
@@ -16,11 +16,6 @@
 }
 .chatBox .my-msg{
         transform: translateX(75vw);
-        width: 15vw;
-        padding: 10px;
-        margin: 20px 0px;
-        box-shadow: rgba(59, 236, 5, 0.445) 1px 1px 6px 2px !important;
-        border-radius: 20px 5px;
 }
 .footer {
         margin-top: 10px;
