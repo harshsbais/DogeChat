@@ -4,7 +4,6 @@ import UserInfo from './UserInfo'
 import { Form, Row } from 'react-bootstrap'
 import './Chat.css'
 import db from "../firebase.js";
-import firebase from "firebase";
 function Chat() {
     const [modalShow, setModalShow] = useState(true);
     const [message, setMessage] = useState({});
@@ -14,6 +13,14 @@ function Chat() {
         if (read_cookie('userName').length !== 0) {
             setModalShow(false);
         }
+    }, [])
+    useEffect(() => {
+        db.collection("messages")
+            .orderBy("time", "asc")
+            .onSnapshot((snapshot) => {
+                setMessages(snapshot.docs.map((doc) => doc.data()))
+            }
+            )
     }, [])
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,6 +32,12 @@ function Chat() {
         console.log(message);
         db.collection("messages").add(message);
         setMessage({});
+        db.collection("messages")
+            .orderBy("time", "asc")
+            .onSnapshot((snapshot) => {
+                setMessages(snapshot.docs.map((doc) => doc.data()))
+            }
+            )
     }
     const handleChange = (e) => {
         setMessage({ ...message, [e.target.name]: e.target.value });
@@ -39,41 +52,19 @@ function Chat() {
                 <nav className="navbar">
                     <p className='mx-auto pt-1 navbar-inner' style={{ fontSize: '40px', fontFamily: "'Redressed', cursive" }}>Global Chat</p>
                 </nav>
-                <Row style={{ width: '100%' }}>
-                    <div className="user-msg">
-                        <p style={{ color: 'orange' }}>Harsh</p>
-                        <p>lorem ipsum</p>
-                        <p style={{ color: 'orange' }}>3 days ago</p>
-                    </div>
-                </Row>
-                <Row style={{ width: '100%' }}>
-                    <div className="user-msg">
-                        <p style={{ color: 'orange' }}>Harsh</p>
-                        <p>lorem ipsum</p>
-                        <p style={{ color: 'orange' }}>3 days ago</p>
-                    </div>
-                </Row>
-                <Row style={{ width: '100%' }}>
-                    <div className="my-msg">
-                        <p style={{ color: 'orange' }}>Harsh</p>
-                        <p>lorem ipsum</p>
-                        <p style={{ color: 'orange' }}>3 days ago</p>
-                    </div>
-                </Row>
-                <Row style={{ width: '100%' }}>
-                    <div className="user-msg">
-                        <p style={{ color: 'orange' }}>Harsh</p>
-                        <p>lorem ipsum</p>
-                        <p style={{ color: 'orange' }}>3 days ago</p>
-                    </div>
-                </Row>
-                <Row style={{ width: '100%' }}>
-                    <div className="my-msg">
-                        <p style={{ color: 'orange' }}>Harsh</p>
-                        <p>lorem ipsum</p>
-                        <p style={{ color: 'orange' }}>3 days ago</p>
-                    </div>
-                </Row>
+                {console.log(messages)}
+                {messages.map((msg, idx) => {
+                    return (
+                        <Row style={{ width: '100%' }} key={idx}>
+                            <div className="my-msg">
+                                <p style={{ color: 'orange' }}>{msg.name}</p>
+                                <p>{msg.content}</p>
+                                <p style={{ color: 'orange' }}>3 days ago</p>
+                            </div>
+                        </Row>
+                    )
+                })
+                }
             </div >
             <div className='footer'>
                 <Form onSubmit={handleSubmit}>
