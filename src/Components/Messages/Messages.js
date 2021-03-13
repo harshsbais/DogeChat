@@ -3,6 +3,20 @@ import { Row } from 'react-bootstrap';
 import { read_cookie } from 'sfcookies';
 import './Messages.css'
 function Messages(props) {
+    const convertTime = (seconds) => {
+        seconds = (new Date().getTime().toString() - seconds);
+        seconds /= 1000;
+        let days = Math.floor(seconds / (3600 * 24));
+        if (days > 0) return (days + " Days")
+        seconds -= days * 3600 * 24;
+        let hrs = Math.floor(seconds / 3600);
+        if (hrs > 0) return (hrs + " Hours")
+        seconds -= hrs * 3600;
+        let mnts = Math.floor(seconds / 60);
+        if (mnts > 0) return (mnts + " Minutes")
+        seconds -= mnts * 60;
+        return "Few Seconds"
+    }
     return (
         <div className="messages">
             {props.messages.map((msg, idx) => {
@@ -12,8 +26,8 @@ function Messages(props) {
                             <p style={{ color: 'orange' }}>{msg.name}</p>
                             <p>{msg.content}</p>
                             <p style={{ color: 'orange' }}>
-                                {parseInt((new Date().getTime().toString() - msg.time) / 60000)} min ago
-                                    </p>
+                                {convertTime(msg.time)} ago
+                            </p>
                         </div>
                     </Row>
                 )
