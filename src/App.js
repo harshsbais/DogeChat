@@ -1,5 +1,5 @@
 import './App.css';
-import ChatContainer from './Components/ChatContainer'
+import ChatContainer from './Components/Chat/ChatContainer'
 function App() {
   return (
     <div className="App">

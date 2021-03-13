@@ -1,9 +1,10 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
 import { read_cookie } from 'sfcookies';
+import './Messages.css'
 function Messages(props) {
     return (
-        <div>
+        <div className="messages">
             {props.messages.map((msg, idx) => {
                 return (
                     <Row style={{ width: '100%' }} key={idx}>

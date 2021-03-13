@@ -1,0 +1,12 @@
+.messages .msg{
+        width: 15vw;
+        min-width: 100px;
+        padding: 10px;
+        margin: 20px 0px;
+        box-shadow: rgba(232, 236, 5, 0.507) 1px 1px 6px 2px;
+        border-radius: 5px 20px;
+}
+.messages .my-msg{
+        transform: translateX(75vw);
+        box-shadow: rgba(82, 255, 1, 0.507) 1px 1px 6px 2px;
+}

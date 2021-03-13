@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { read_cookie } from 'sfcookies';
 import Chat from './Chat';
 import './Chat.css'
-import db from "../firebase.js";
+import db from "../../firebase.js";
 function ChatContainer() {
     const [modalShow, setModalShow] = useState(true);
     const [message, setMessage] = useState({});

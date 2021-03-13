@@ -1,6 +1,6 @@
 import React from 'react'
-import UserInfo from './UserInfo'
-import Messages from './Messages'
+import UserInfo from '../UserInfo/UserInfo'
+import Messages from '../Messages/Messages'
 import { Form } from 'react-bootstrap';
 function Chat(props) {
     return (
