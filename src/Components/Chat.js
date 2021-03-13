@@ -10,22 +10,26 @@ function Chat() {
     const [messages, setMessages] = useState([]);
     const { content } = message;
     const msgEnd = useRef();
-    useEffect(() => {
-        if (read_cookie('userName').length !== 0) {
-            setModalShow(false);
-        }
-    }, [])
-    useEffect(() => {
+    const setMsg = () => {
         db.collection("messages")
             .orderBy("time", "asc")
             .onSnapshot((snapshot) => {
                 setMessages(snapshot.docs.map((doc) => doc.data()))
             }
             )
-    }, [])
+    }
     useEffect(() => {
         msgEnd?.current.scrollIntoView({ behavior: "auto" });
     }, [messages])
+    useEffect(() => {
+        if (read_cookie('userName').length !== 0) {
+            setModalShow(false);
+        }
+        setMsg();
+    }, []);
+    const handleChange = (e) => {
+        setMessage({ ...message, [e.target.name]: e.target.value });
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
         let mess = message;
@@ -36,15 +40,7 @@ function Chat() {
         console.log(message);
         db.collection("messages").add(message);
         setMessage({});
-        db.collection("messages")
-            .orderBy("time", "asc")
-            .onSnapshot((snapshot) => {
-                setMessages(snapshot.docs.map((doc) => doc.data()))
-            }
-            )
-    }
-    const handleChange = (e) => {
-        setMessage({ ...message, [e.target.name]: e.target.value });
+        setMsg();
     }
     return (
         <>
