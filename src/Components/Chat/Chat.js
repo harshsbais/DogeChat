@@ -2,6 +2,7 @@ import React from 'react'
 import UserInfo from '../UserInfo/UserInfo'
 import Messages from '../Messages/Messages'
 import { Form } from 'react-bootstrap';
+import logo from '../../assets/logo.png'
 function Chat(props) {
     return (
         <>
@@ -11,7 +12,8 @@ function Chat(props) {
                     onHide={() => props.setModalShow(false)}
                 />
                 <nav className="navbar">
-                    <p className='mx-auto pt-1 navbar-inner' style={{ fontSize: '40px', fontFamily: "'Redressed', cursive" }}>Global Chat</p>
+                    <a className="navbar-brand" href="/"><img style={{ height: "90px" }} alt="logo" src={logo} /></a>
+                    <p className='mx-auto pt-1 navbar-inner' style={{ fontSize: '40px', fontFamily: "'Redressed', cursive" }}>DogeChat</p>
                 </nav>
                 <Messages messages={props.messages} />
             </div >
