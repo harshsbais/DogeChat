@@ -21,7 +21,7 @@ function Messages(props) {
         <div className="messages">
             {props.messages.map((msg, idx) => {
                 return (
-                    <Row style={{ width: '100%' }} key={idx}>
+                    <Row style={{ width: '100%' }} key={msg.time}>
                         <div className={`msg ${(msg.userID === read_cookie('userID')) ? 'my-msg' : ''}`}>
                             <p style={{ color: '#CCCCCC' }}>{msg.name.length > 0 ? msg.name : "Anonymous"}</p>
                             <p>{msg.content}</p>
