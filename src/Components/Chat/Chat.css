@@ -3,6 +3,7 @@
         background-attachment: fixed;
         background-repeat: no-repeat;
         background-size: cover;
+        overflow-x: hidden;
         color:white;
         padding: 3vh 10vh 10vh 10vh;
 }
