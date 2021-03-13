@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { read_cookie } from 'sfcookies';
 import UserInfo from './UserInfo'
 import { Form, Row } from 'react-bootstrap'
@@ -9,6 +9,7 @@ function Chat() {
     const [message, setMessage] = useState({});
     const [messages, setMessages] = useState([]);
     const { content } = message;
+    const msgEnd = useRef();
     useEffect(() => {
         if (read_cookie('userName').length !== 0) {
             setModalShow(false);
@@ -22,6 +23,9 @@ function Chat() {
             }
             )
     }, [])
+    useEffect(() => {
+        msgEnd?.current.scrollIntoView({ behavior: "auto" });
+    }, [messages])
     const handleSubmit = (e) => {
         e.preventDefault();
         let mess = message;
@@ -44,7 +48,7 @@ function Chat() {
     }
     return (
         <>
-            <div className='chatBox'>
+            <div className='chatBox' id='chat'>
                 <UserInfo
                     show={modalShow}
                     onHide={() => setModalShow(false)}
@@ -54,18 +58,36 @@ function Chat() {
                 </nav>
                 {console.log(messages)}
                 {messages.map((msg, idx) => {
-                    return (
-                        <Row style={{ width: '100%' }} key={idx}>
-                            <div className="my-msg">
-                                <p style={{ color: 'orange' }}>{msg.name}</p>
-                                <p>{msg.content}</p>
-                                <p style={{ color: 'orange' }}>3 days ago</p>
-                            </div>
-                        </Row>
-                    )
+                    if (msg.userID === read_cookie('userID')) {
+                        return (
+                            <Row style={{ width: '100%' }} key={idx}>
+                                <div className="my-msg">
+                                    <p style={{ color: 'orange' }}>{msg.name}</p>
+                                    <p>{msg.content}</p>
+                                    <p style={{ color: 'orange' }}>
+                                        {parseInt((new Date().getTime().toString() - msg.time) / 60000)} min ago
+                                    </p>
+                                </div>
+                            </Row>
+                        )
+                    }
+                    else {
+                        return (
+                            <Row style={{ width: '100%' }} key={idx}>
+                                <div className="user-msg">
+                                    <p style={{ color: 'orange' }}>{msg.name}</p>
+                                    <p>{msg.content}</p>
+                                    <p style={{ color: 'orange' }}>
+                                        {parseInt((new Date().getTime().toString() - msg.time) / 60000)} min ago
+                                    </p>
+                                </div>
+                            </Row>
+                        )
+                    }
                 })
                 }
             </div >
+            <div ref={msgEnd}></div>
             <div className='footer'>
                 <Form onSubmit={handleSubmit}>
                     <input className="mt-4" required value={content ?? ''} name='content' onChange={handleChange} style={{ width: '70%' }} />
