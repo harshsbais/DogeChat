@@ -42,7 +42,7 @@ function ChatContainer() {
         setMsg();
     }
     return (
-        <Chat modalShow={modalShow} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} handleSubmit={handleSubmit} />
+        <Chat modalShow={modalShow} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} setModalShow={setModalShow} handleSubmit={handleSubmit} />
     )
 }
 
