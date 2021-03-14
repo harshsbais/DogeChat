@@ -23,11 +23,11 @@ function Messages(props) {
                 return (
                     <Row style={{ width: '100%' }} key={msg.time}>
                         <div className={`msg ${(msg.userID === read_cookie('userID')) ? 'my-msg' : ''}`}>
-                            <p style={{ color: '#F65058FF' }}>{msg.name.length > 0 ? msg.name : "Anonymous"}</p>
+                            <center><p style={{ color: '#F65058FF', fontSize: '12px' }}>{msg.name.length > 0 ? msg.name : "Anonymous"}</p></center>
                             <p>{msg.content}</p>
-                            <p style={{ color: '#F2AA4CFF' }}>
+                            <center><p style={{ color: '#F2AA4CFF', fontSize: '12px' }}>
                                 {convertTime(msg.time)} ago
-                            </p>
+                            </p></center>
                         </div>
                     </Row>
                 )
