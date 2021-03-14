@@ -22,6 +22,7 @@ function Chat(props) {
             <div ref={props.msgEnd}></div>
             <div className='footer'>
                 <Form onSubmit={props.handleSubmit}>
+                    <img className="mr-4 pb-1" style={{ height: '30px' }} src={logo} alt="emoji-picker" />
                     <input className="mt-4" ref={props.msgBox} required value={props.content ?? ''} name='content' onChange={props.handleChange} style={{ width: '70%' }} />
                     <button className="ml-4" style={{ backgroundColor: 'black', color: 'white', border: 'none' }} type="submit"><i className="fa fa-arrow-right"></i></button>
                 </Form>
