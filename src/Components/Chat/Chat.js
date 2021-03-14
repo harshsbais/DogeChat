@@ -11,6 +11,8 @@ function Chat(props) {
                 <EmojiPicker
                     show={props.emojiPicker}
                     onHide={() => props.setEmojiPicker(false)}
+                    message={props.message}
+                    setMessage={props.setMessage}
                 />
                 <UserInfo
                     show={props.modalShow}

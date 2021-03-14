@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import Picker from 'emoji-picker-react';
 import { Modal } from 'react-bootstrap'
 function EmojiPicker(props) {
-    const [chosenEmoji, setChosenEmoji] = useState(null);
     const onEmojiClick = (event, emojiObject) => {
-        setChosenEmoji(emojiObject);
+        let msg = props.message;
+        console.log(emojiObject.emoji)
+        if (!msg.content)
+            msg.content = emojiObject.emoji;
+        else
+            msg.content += emojiObject.emoji;
+        props.setMessage(msg);
     };
     return (
         <div>
