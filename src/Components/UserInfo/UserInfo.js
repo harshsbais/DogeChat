@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal, Form } from 'react-bootstrap'
 import { bake_cookie } from 'sfcookies';
 function UserInfo(props) {

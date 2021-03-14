@@ -10,7 +10,6 @@ function Chat(props) {
                 <UserInfo
                     modalShow={props.modalShow}
                     onHide={() => props.setModalShow(false)}
-                    modalBox={props.modalBox}
                 />
                 <nav className="navbar">
                     <img className="navbar-brand" style={{ height: "90px" }} alt="logo" src={logo} />
