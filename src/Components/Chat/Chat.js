@@ -8,8 +8,9 @@ function Chat(props) {
         <>
             <div className='chatBox' id='chat'>
                 <UserInfo
-                    show={props.modalShow}
+                    modalShow={props.modalShow}
                     onHide={() => props.setModalShow(false)}
+                    modalBox={props.modalBox}
                 />
                 <nav className="navbar">
                     <img className="navbar-brand" style={{ height: "90px" }} alt="logo" src={logo} />
@@ -20,7 +21,7 @@ function Chat(props) {
             <div ref={props.msgEnd}></div>
             <div className='footer'>
                 <Form onSubmit={props.handleSubmit}>
-                    <input className="mt-4" required value={props.content ?? ''} name='content' onChange={props.handleChange} style={{ width: '70%' }} />
+                    <input className="mt-4" ref={props.msgBox} required value={props.content ?? ''} name='content' onChange={props.handleChange} style={{ width: '70%' }} />
                     <button className="ml-4" style={{ backgroundColor: 'black', color: 'white', border: 'none' }} type="submit"><i className="fa fa-arrow-right"></i></button>
                 </Form>
             </div>

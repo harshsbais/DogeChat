@@ -11,7 +11,7 @@ function UserInfo(props) {
     }
     return (
         <Modal
-            {...props}
+            show={props.modalShow}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered>

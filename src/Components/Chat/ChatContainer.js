@@ -8,7 +8,9 @@ function ChatContainer() {
     const [message, setMessage] = useState({});
     const [messages, setMessages] = useState([]);
     const { content } = message;
-    const msgEnd = useRef();
+    const msgEnd = useRef(null);
+    const msgBox = useRef(null);
+    const modalBox = useRef(null);
     const setMsg = () => {
         db.collection("messages")
             .orderBy("time", "asc")
@@ -18,6 +20,8 @@ function ChatContainer() {
             )
     }
     useEffect(() => {
+        // modalBox?.current.focus();
+        msgBox?.current.focus();
         msgEnd?.current.scrollIntoView({ behavior: "auto" });
     }, [messages])
     useEffect(() => {
@@ -42,7 +46,7 @@ function ChatContainer() {
         setMsg();
     }
     return (
-        <Chat modalShow={modalShow} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} setModalShow={setModalShow} handleSubmit={handleSubmit} />
+        <Chat modalShow={modalShow} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} setModalShow={setModalShow} handleSubmit={handleSubmit} modalBox={modalBox} msgBox={msgBox} />
     )
 }
 
