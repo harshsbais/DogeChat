@@ -1,5 +1,6 @@
 import React from 'react'
 import UserInfo from '../UserInfo/UserInfo'
+import EmojiPicker from '../EmojiPicker/EmojiPicker'
 import Messages from '../Messages/Messages'
 import { Form } from 'react-bootstrap';
 import logo from '../../assets/logo.png'
@@ -7,8 +8,9 @@ function Chat(props) {
     return (
         <>
             <div className='chatBox' id='chat'>
+                <EmojiPicker />
                 <UserInfo
-                    modalShow={props.modalShow}
+                    show={props.modalShow}
                     onHide={() => props.setModalShow(false)}
                 />
                 <nav className="navbar">
