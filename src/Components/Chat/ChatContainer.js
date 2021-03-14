@@ -21,7 +21,7 @@ function ChatContainer() {
         msgEnd?.current.scrollIntoView({ behavior: "auto" });
     }, [messages])
     useEffect(() => {
-        if (read_cookie('userName').length !== 0) {
+        if (read_cookie('userID').length !== 0) {
             setModalShow(false);
         }
         setMsg();
