@@ -39,10 +39,10 @@ function ChatContainer() {
         mess.name = read_cookie('userName');
         mess.userID = read_cookie('userID');
         setMessage(mess);
-        console.log(message);
         db.collection("messages").add(message);
-        setMessage({});
-        setMsg();
+        let msg = messages;
+        msg.push(mess);
+        setMessage(msg);
     }
     return (
         <Chat modalShow={modalShow} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} setModalShow={setModalShow} handleSubmit={handleSubmit} msgBox={msgBox} emojiPicker={emojiPicker} setEmojiPicker={setEmojiPicker} message={message} setMessage={setMessage} />
