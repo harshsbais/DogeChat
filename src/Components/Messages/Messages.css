@@ -5,9 +5,10 @@
         padding: 10px;
         margin: 20px 0px;
         box-shadow: rgba(232, 236, 5, 0.507) 1px 1px 6px 2px;
-        border-radius: 5px 20px;
+        border-radius: 20px 5px;
 }
 .messages .my-msg{
+        border-radius: 5px 20px; 
         transform: translateX(75vw);
         box-shadow: rgba(82, 255, 1, 0.507) 1px 1px 6px 2px;
 }
