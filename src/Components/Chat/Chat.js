@@ -12,7 +12,7 @@ function Chat(props) {
                     onHide={() => props.setModalShow(false)}
                 />
                 <nav className="navbar">
-                    <a className="navbar-brand" href="/"><img style={{ height: "90px" }} alt="logo" src={logo} /></a>
+                    <img className="navbar-brand" style={{ height: "90px" }} alt="logo" src={logo} />
                     <p className='mx-auto pt-1 navbar-inner' style={{ fontSize: '40px', fontFamily: "'Redressed', cursive" }}>DogeChat</p>
                 </nav>
                 <Messages messages={props.messages} />
