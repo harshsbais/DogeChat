@@ -12,7 +12,7 @@ This is a Messenger App, made with react.
 
 Take chatting to the moon **🚀**
 
-Here is the link to the deployed app :- https://epic-snyder-4490ac.netlify.app/
+Here is the link to the deployed app :- https://doge-chat.netlify.app/
 
 
 
