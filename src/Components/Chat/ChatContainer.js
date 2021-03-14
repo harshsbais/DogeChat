@@ -7,6 +7,7 @@ function ChatContainer() {
     const [modalShow, setModalShow] = useState(true);
     const [message, setMessage] = useState({});
     const [messages, setMessages] = useState([]);
+    const [emojiPicker, setEmojiPicker] = useState(false);
     const { content } = message;
     const msgEnd = useRef(null);
     const msgBox = useRef(null);
@@ -44,7 +45,7 @@ function ChatContainer() {
         setMsg();
     }
     return (
-        <Chat modalShow={modalShow} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} setModalShow={setModalShow} handleSubmit={handleSubmit} msgBox={msgBox} />
+        <Chat modalShow={modalShow} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} setModalShow={setModalShow} handleSubmit={handleSubmit} msgBox={msgBox} emojiPicker={emojiPicker} setEmojiPicker={setEmojiPicker} />
     )
 }
 

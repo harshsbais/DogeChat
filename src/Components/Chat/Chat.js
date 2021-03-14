@@ -8,7 +8,10 @@ function Chat(props) {
     return (
         <>
             <div className='chatBox' id='chat'>
-                <EmojiPicker />
+                <EmojiPicker
+                    show={props.emojiPicker}
+                    onHide={() => props.setEmojiPicker(false)}
+                />
                 <UserInfo
                     show={props.modalShow}
                     onHide={() => props.setModalShow(false)}
@@ -22,7 +25,7 @@ function Chat(props) {
             <div ref={props.msgEnd}></div>
             <div className='footer'>
                 <Form onSubmit={props.handleSubmit}>
-                    <img className="mr-4 pb-1" style={{ height: '30px' }} src={logo} alt="emoji-picker" />
+                    <img className="mr-4 pb-1" style={{ height: '30px' }} src={logo} alt="emoji-picker" onClick={(e) => props.setEmojiPicker(true)} />
                     <input className="mt-4" ref={props.msgBox} required value={props.content ?? ''} name='content' onChange={props.handleChange} style={{ width: '70%' }} />
                     <button className="ml-4" style={{ backgroundColor: 'black', color: 'white', border: 'none' }} type="submit"><i className="fa fa-arrow-right"></i></button>
                 </Form>
