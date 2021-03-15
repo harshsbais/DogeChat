@@ -42,6 +42,7 @@ function ChatContainer() {
         db.collection("messages").add(message);
         let msg = messages;
         msg.push(mess);
+        setMessage({});
         setMessages(msg);
     }
     return (
