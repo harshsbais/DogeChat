@@ -42,7 +42,7 @@ function ChatContainer() {
         db.collection("messages").add(message);
         let msg = messages;
         msg.push(mess);
-        setMessage(msg);
+        setMessages(msg);
     }
     return (
         <Chat modalShow={modalShow} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} setModalShow={setModalShow} handleSubmit={handleSubmit} msgBox={msgBox} emojiPicker={emojiPicker} setEmojiPicker={setEmojiPicker} message={message} setMessage={setMessage} />
