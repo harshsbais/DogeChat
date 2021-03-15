@@ -4,7 +4,6 @@ import { Modal } from 'react-bootstrap'
 function EmojiPicker(props) {
     const onEmojiClick = (event, emojiObject) => {
         let msg = props.message;
-        console.log(emojiObject.emoji)
         if (!msg.content)
             msg.content = emojiObject.emoji;
         else
