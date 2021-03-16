@@ -15,7 +15,6 @@ function EmojiPicker(props) {
     };
     return (
         <div>
-            {console.log('hello')}
             <Modal
                 {...props}
                 aria-labelledby="contained-modal-title-vcenter"
