@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
 import { read_cookie } from 'sfcookies';
+import { Button } from 'react-bootstrap';
 import './Messages.css'
 function Messages(props) {
     const convertTime = (seconds) => {
@@ -28,6 +29,7 @@ function Messages(props) {
                             <center><p style={{ color: '#F2AA4CFF', fontSize: '12px' }}>
                                 {convertTime(msg.time)} ago
                             </p></center>
+                            <center><Button onClick={(e) => props.delMsg(msg.time)} disabled={!(msg.userID === read_cookie('userID'))}><i className='fa fa-trash'></i></Button></center>
                         </div>
                     </Row>
                 )

@@ -22,7 +22,7 @@ function Chat(props) {
                     <img className="navbar-brand" style={{ height: "90px" }} alt="logo" src={logo} />
                     <p className='mx-auto pt-1 navbar-inner' style={{ fontSize: '40px', fontFamily: "'Redressed', cursive" }}>DogeChat</p>
                 </nav>
-                <Messages messages={props.messages} />
+                <Messages messages={props.messages} delMsg={props.delMsg} />
             </div >
             <div ref={props.msgEnd}></div>
             <div className='footer'>
