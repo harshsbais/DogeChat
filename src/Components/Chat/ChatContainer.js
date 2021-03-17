@@ -27,6 +27,16 @@ function ChatContainer() {
             });
         });
     }
+    const likeMsg = (id, claps) => {
+        var jobskill_query = db.collection('messages').where('time', '==', id);
+        jobskill_query.get().then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                doc.ref.update({
+                    "clap": claps + 1
+                })
+            })
+        });
+    }
     useEffect(() => {
         msgBox?.current.focus();
         msgEnd?.current.scrollIntoView({ behavior: "auto" });
@@ -55,7 +65,8 @@ function ChatContainer() {
     }
     return (
         <>
-            <Chat modalShow={modalShow} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} setModalShow={setModalShow} handleSubmit={handleSubmit} msgBox={msgBox} emojiPicker={emojiPicker} setEmojiPicker={setEmojiPicker} message={message} setMessage={setMessage} delMsg={delMsg} />
+            <button onClick={likeMsg}>Click</button>
+            <Chat modalShow={modalShow} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} setModalShow={setModalShow} handleSubmit={handleSubmit} msgBox={msgBox} emojiPicker={emojiPicker} setEmojiPicker={setEmojiPicker} message={message} setMessage={setMessage} delMsg={delMsg} likeMsg={likeMsg} />
         </>
     )
 }

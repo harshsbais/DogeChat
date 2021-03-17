@@ -30,7 +30,7 @@ function Messages(props) {
                                 {convertTime(msg.time)} ago
                             </p></center>
                             <center><Button style={{ display: msg.userID === read_cookie('userID') ? '' : 'none', backgroundColor: 'transparent', border: 'none' }} onClick={(e) => props.delMsg(msg.time)}><i className='fa fa-trash'></i></Button></center>
-                            <center><Button style={{ display: msg.userID === read_cookie('userID') ? 'none' : '', backgroundColor: 'transparent', border: 'none' }} ><i className='fa fa-thumbs-up'></i></Button></center>
+                            <center><Button style={{ display: msg.userID === read_cookie('userID') ? 'none' : '', backgroundColor: 'transparent', border: 'none' }} onClick={(e) => props.likeMsg(msg.time, msg.clap ?? 0)}><i className='fa fa-thumbs-up'></i></Button></center>
                         </div>
                     </Row>
                 )
