@@ -29,7 +29,7 @@ function Messages(props) {
                             <center><p style={{ color: '#F2AA4CFF', fontSize: '12px' }}>
                                 {convertTime(msg.time)} ago
                             </p></center>
-                            <center><Button onClick={(e) => props.delMsg(msg.time)} disabled={!(msg.userID === read_cookie('userID'))}><i className='fa fa-trash'></i></Button></center>
+                            <center><Button style={{ display: msg.userID === read_cookie('userID') ? '' : 'none', backgroundColor: 'transparent', border: 'none' }} onClick={(e) => props.delMsg(msg.time)}><i className='fa fa-trash'></i></Button></center>
                         </div>
                     </Row>
                 )
