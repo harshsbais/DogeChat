@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { read_cookie } from 'sfcookies';
+import { read_cookie, bake_cookie } from 'sfcookies';
 import Chat from './Chat';
 import './Chat.css'
 import db from "../../firebase.js";
@@ -28,14 +28,31 @@ function ChatContainer() {
         });
     }
     const likeMsg = (id, claps) => {
+        var likes;
+        var is_there = false;
+        if (!read_cookie('likes')) {
+            likes = [];
+            bake_cookie('likes', likes);
+        }
+        else
+            likes = read_cookie('likes');
+        likes.map((like, idx) => {
+            if (like == id) {
+                is_there = true;
+                likes.splice(idx, 1);
+            }
+        })
+        if (!is_there)
+            likes.push(id);
         var jobskill_query = db.collection('messages').where('time', '==', id);
         jobskill_query.get().then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
                 doc.ref.update({
-                    "clap": claps + 1
+                    "clap": is_there ? claps - 1 : claps + 1
                 })
             })
         });
+        bake_cookie('likes', likes);
     }
     useEffect(() => {
         msgBox?.current.focus();
@@ -65,7 +82,6 @@ function ChatContainer() {
     }
     return (
         <>
-            <button onClick={likeMsg}>Click</button>
             <Chat modalShow={modalShow} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} setModalShow={setModalShow} handleSubmit={handleSubmit} msgBox={msgBox} emojiPicker={emojiPicker} setEmojiPicker={setEmojiPicker} message={message} setMessage={setMessage} delMsg={delMsg} likeMsg={likeMsg} />
         </>
     )
