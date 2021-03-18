@@ -37,10 +37,11 @@ function ChatContainer() {
         else
             likes = read_cookie('likes');
         likes.map((like, idx) => {
-            if (like == id) {
+            if (like === id) {
                 is_there = true;
                 likes.splice(idx, 1);
             }
+            return null;
         })
         if (!is_there)
             likes.push(id);
