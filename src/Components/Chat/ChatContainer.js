@@ -11,6 +11,7 @@ function ChatContainer() {
     const { content } = message;
     const msgEnd = useRef(null);
     const msgBox = useRef(null);
+    const scroll = useRef(true);
     const setMsg = () => {
         db.collection("messages")
             .orderBy("time", "asc")
@@ -57,7 +58,9 @@ function ChatContainer() {
     }
     useEffect(() => {
         msgBox?.current.focus();
-        msgEnd?.current.scrollIntoView({ behavior: "auto" });
+        if (scroll?.current)
+            msgEnd?.current.scrollIntoView({ behavior: "auto" });
+        scroll.current = false;
     }, [messages])
     useEffect(() => {
         if (read_cookie('userID').length !== 0) {
@@ -78,6 +81,7 @@ function ChatContainer() {
         db.collection("messages").add(message);
         let msg = messages;
         msg.push(mess);
+        scroll.current = true;
         setMessage({});
         setMessages(msg);
     }
