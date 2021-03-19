@@ -30,6 +30,13 @@ function ChatContainer() {
                 doc.ref.delete();
             });
         });
+        var desertRef = storage.ref().child(`images/${id}.png`);
+        desertRef.delete().then(() => {
+            console.log('deleted')
+        }).catch((error) => {
+            console.log(error)
+        });
+
     }
     const likeMsg = (id, claps) => {
         var likes;
@@ -83,8 +90,10 @@ function ChatContainer() {
     const handleSubmit = (e) => {
         e.preventDefault();
         let img_add;
+        let mess = message;
+        mess.time = new Date().getTime().toString();
         if (image) {
-            const uploadTask = storage.ref(`images/${image.name}`).put(image);
+            const uploadTask = storage.ref(`images/${mess.time}.png`).put(image);
             uploadTask.on(
                 "state_changed",
                 snapshot => { },
@@ -94,13 +103,11 @@ function ChatContainer() {
                 () => {
                     storage
                         .ref("images")
-                        .child(image.name)
+                        .child(`${mess.time}.png`)
                         .getDownloadURL()
                         .then(url => {
                             console.log(url);
                             img_add = url;
-                            let mess = message;
-                            mess.time = new Date().getTime().toString();
                             mess.name = read_cookie('userName');
                             mess.userID = read_cookie('userID');
                             if (img_add)
@@ -118,7 +125,6 @@ function ChatContainer() {
         }
         else {
             let mess = message;
-            mess.time = new Date().getTime().toString();
             mess.name = read_cookie('userName');
             mess.userID = read_cookie('userID');
             if (img_add)
