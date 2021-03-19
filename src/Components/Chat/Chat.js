@@ -27,7 +27,7 @@ function Chat(props) {
             <div ref={props.msgEnd}></div>
             <div className='footer'>
                 <Form onSubmit={props.handleSubmit}>
-                    <div class="image-upload" style={{ float: 'left', marginTop: '30px', marginLeft: '5vw' }}>
+                    <div class="image-upload" style={{ float: 'left', marginTop: '27px', marginLeft: '8vw' }}>
                         <label for="file-input">
                             <i className="fa fa-upload" style={{ height: '3-px', color: 'white' }} alt="upload" />
                         </label>
