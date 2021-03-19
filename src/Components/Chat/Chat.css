@@ -20,3 +20,6 @@ body {
   background-color: black;
   text-align: center;
 }
+.image-upload > input {
+  display: none;
+}
