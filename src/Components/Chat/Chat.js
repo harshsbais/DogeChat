@@ -27,11 +27,11 @@ function Chat(props) {
             <div ref={props.msgEnd}></div>
             <div className='footer'>
                 <Form onSubmit={props.handleSubmit}>
-                    <div class="image-upload mt-4 ml-5" style={{ float: 'left' }}>
+                    <div class="image-upload" style={{ float: 'left', marginTop: '30px', marginLeft: '5vw' }}>
                         <label for="file-input">
                             <i className="fa fa-upload" style={{ height: '3-px', color: 'white' }} alt="upload" />
                         </label>
-                        <input id="file-input" type="file" />
+                        <input id="file-input" onChange={props.handleImageSelect} type="file" />
                     </div>
                     <img className="mr-4 pb-1" style={{ height: '30px' }} src={logo} alt="emoji-picker" onClick={(e) => props.setEmojiPicker(true)} />
                     <input autocomplete="off" className="mt-4" ref={props.msgBox} required value={props.message.content ?? ''} name='content' onChange={props.handleChange} style={{ width: '70%' }} />
