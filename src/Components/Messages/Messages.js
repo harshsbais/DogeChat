@@ -20,13 +20,13 @@ function Messages(props) {
     }
     return (
         <div className="messages">
-            {props.messages.map((msg, idx) => {
+            {props.messages.map((msg) => {
                 return (
                     <Row style={{ width: '100%' }} key={msg.time}>
                         <div className={`msg ${(msg.userID === read_cookie('userID')) ? 'my-msg' : ''}`}>
                             <center><p style={{ color: '#F65058FF', fontSize: '12px' }}>{msg.name.length > 0 ? msg.name : "Anonymous"}</p></center>
                             {msg.url ?
-                                <img src={msg.url} style={{ height: '400px' }} alt='meme' />
+                                <img src={msg.url} style={{ height: '400px', maxWidth: '100%' }} alt='meme' />
                                 :
                                 ''
                             }
