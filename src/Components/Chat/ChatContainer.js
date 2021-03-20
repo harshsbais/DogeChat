@@ -30,8 +30,8 @@ function ChatContainer() {
                 doc.ref.delete();
             });
         });
-        var desertRef = storage.ref().child(`images/${id}.png`);
-        desertRef.delete().then(() => {
+        var imgRef = storage.ref().child(`images/${id}.png`);
+        imgRef.delete().then(() => {
             console.log('deleted')
         }).catch((error) => {
             console.log(error)
