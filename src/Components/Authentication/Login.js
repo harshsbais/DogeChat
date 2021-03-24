@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Form } from 'react-bootstrap';
-import { bake_cookie } from 'sfcookies';
+import { read_cookie } from 'sfcookies';
 function Login(props) {
     const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
+    useEffect(() => {
+        setUsername(read_cookie("userName"));
+    }, [])
     const setUserInfo = (e) => {
         e.preventDefault();
         console.log(password)
-        // bake_cookie('userName', userData);
-        // bake_cookie('userID', new Date().getTime().toString());
-        // props.onHide();
+        let pwd = read_cookie("password");
+        if (pwd === password)
+            props.onHide();
+        else
+            alert("password not matching")
     }
     return (
         <Modal
@@ -19,7 +25,7 @@ function Login(props) {
             centered>
             <Modal.Body>
                 <Form onSubmit={setUserInfo}>
-                    <center><h1>Welcome Back 👋</h1>
+                    <center><h1>Welcome Back 👋 {username}</h1>
                         <label htmlFor='user'>Password</label>
                         <input type="password" className="ml-3 mt-1" name='password' value={password} onChange={(e) => setPassword(e.target.value)} />
                         <br />
