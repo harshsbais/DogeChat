@@ -5,7 +5,8 @@ import './Chat.css'
 import db from "../../firebase.js";
 import { storage } from "../../firebase.js";
 function ChatContainer() {
-    const [modalShow, setModalShow] = useState(true);
+    const [signupModalShow, setSignupModalShow] = useState(false);
+    const [loginModalShow, setLoginModalShow] = useState(false);
     const [message, setMessage] = useState({});
     const [messages, setMessages] = useState([]);
     const [emojiPicker, setEmojiPicker] = useState(false);
@@ -73,9 +74,10 @@ function ChatContainer() {
             msgEnd?.current.scrollIntoView({ behavior: "auto" });
     }, [messages])
     useEffect(() => {
-        if (read_cookie('userID').length !== 0) {
-            // setModalShow(false);
-        }
+        if (read_cookie('userID').length !== 0 && read_cookie('userName').length !== 0 && read_cookie('password').length !== 0)
+            setLoginModalShow(true);
+        else
+            setSignupModalShow(true);
         setMsg();
     }, []);
     const handleChange = (e) => {
@@ -140,7 +142,7 @@ function ChatContainer() {
     }
     return (
         <>
-            <Chat modalShow={modalShow} handleImageSelect={handleImageSelect} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} setModalShow={setModalShow} handleSubmit={handleSubmit} msgBox={msgBox} emojiPicker={emojiPicker} setEmojiPicker={setEmojiPicker} message={message} setMessage={setMessage} delMsg={delMsg} likeMsg={likeMsg} />
+            <Chat setLoginModalShow={setLoginModalShow} loginModalShow={loginModalShow} setSignupModalShow={setSignupModalShow} signupModalShow={signupModalShow} handleImageSelect={handleImageSelect} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} handleSubmit={handleSubmit} msgBox={msgBox} emojiPicker={emojiPicker} setEmojiPicker={setEmojiPicker} message={message} setMessage={setMessage} delMsg={delMsg} likeMsg={likeMsg} />
         </>
     )
 }

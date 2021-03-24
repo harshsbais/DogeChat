@@ -15,13 +15,13 @@ function Chat(props) {
                     message={props.message}
                     setMessage={props.setMessage}
                 />
-                {/* <SignUp
-                    show={props.modalShow}
-                    onHide={() => props.setModalShow(false)}
-                /> */}
+                <SignUp
+                    show={props.signupModalShow}
+                    onHide={() => props.setSignupModalShow(false)}
+                />
                 <Login
-                    show={props.modalShow}
-                    onHide={() => props.setModalShow(false)}
+                    show={props.loginModalShow}
+                    onHide={() => props.setLoginModalShow(false)}
                 />
                 <nav className="navbar">
                     <img className="navbar-brand" style={{ height: "90px" }} alt="logo" src={logo} />
