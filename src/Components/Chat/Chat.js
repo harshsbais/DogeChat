@@ -1,5 +1,6 @@
 import React from 'react'
-import UserInfo from '../UserInfo/UserInfo'
+import SignUp from '../Authentication/SignUp'
+import Login from '../Authentication/Login'
 import EmojiPicker from '../EmojiPicker/EmojiPicker'
 import Messages from '../Messages/Messages'
 import { Form } from 'react-bootstrap';
@@ -14,7 +15,11 @@ function Chat(props) {
                     message={props.message}
                     setMessage={props.setMessage}
                 />
-                <UserInfo
+                {/* <SignUp
+                    show={props.modalShow}
+                    onHide={() => props.setModalShow(false)}
+                /> */}
+                <Login
                     show={props.modalShow}
                     onHide={() => props.setModalShow(false)}
                 />

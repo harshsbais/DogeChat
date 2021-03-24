@@ -74,7 +74,7 @@ function ChatContainer() {
     }, [messages])
     useEffect(() => {
         if (read_cookie('userID').length !== 0) {
-            setModalShow(false);
+            // setModalShow(false);
         }
         setMsg();
     }, []);
