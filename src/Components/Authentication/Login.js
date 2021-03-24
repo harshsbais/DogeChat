@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Form } from 'react-bootstrap';
 import { read_cookie } from 'sfcookies';
 function Login(props) {
+    console.log(props);
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     useEffect(() => {
@@ -13,8 +14,11 @@ function Login(props) {
         let pwd = read_cookie("password");
         if (pwd === password)
             props.onHide();
-        else
-            alert("password not matching")
+        else {
+            props.setShowToast(true);
+            props.setToastColor("red");
+            props.setToastData("Password Incorrect")
+        }
     }
     return (
         <Modal

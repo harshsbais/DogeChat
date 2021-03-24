@@ -7,7 +7,9 @@ import { storage } from "../../firebase.js";
 function ChatContainer() {
     const [signupModalShow, setSignupModalShow] = useState(false);
     const [loginModalShow, setLoginModalShow] = useState(false);
-    const [showToast, setShowToast] = useState(true);
+    const [toastData, setToastData] = useState('');
+    const [toastColor, setToastColor] = useState("green");
+    const [showToast, setShowToast] = useState(false);
     const [message, setMessage] = useState({});
     const [messages, setMessages] = useState([]);
     const [emojiPicker, setEmojiPicker] = useState(false);
@@ -143,7 +145,7 @@ function ChatContainer() {
     }
     return (
         <>
-            <Chat setLoginModalShow={setLoginModalShow} showToast={showToast} setShowToast={setShowToast} loginModalShow={loginModalShow} setSignupModalShow={setSignupModalShow} signupModalShow={signupModalShow} handleImageSelect={handleImageSelect} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} handleSubmit={handleSubmit} msgBox={msgBox} emojiPicker={emojiPicker} setEmojiPicker={setEmojiPicker} message={message} setMessage={setMessage} delMsg={delMsg} likeMsg={likeMsg} />
+            <Chat toastColor={toastColor} setToastColor={setToastColor} toastData={toastData} setToastData={setToastData} setLoginModalShow={setLoginModalShow} setShowToast={setShowToast} showToast={showToast} loginModalShow={loginModalShow} setSignupModalShow={setSignupModalShow} signupModalShow={signupModalShow} handleImageSelect={handleImageSelect} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} handleSubmit={handleSubmit} msgBox={msgBox} emojiPicker={emojiPicker} setEmojiPicker={setEmojiPicker} message={message} setMessage={setMessage} delMsg={delMsg} likeMsg={likeMsg} />
         </>
     )
 }

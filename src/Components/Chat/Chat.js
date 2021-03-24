@@ -5,9 +5,12 @@ import EmojiPicker from '../EmojiPicker/EmojiPicker'
 import Messages from '../Messages/Messages'
 import { Form } from 'react-bootstrap';
 import logo from '../../assets/logo.png'
+import ToastComp from '../Toast/ToastComp'
 function Chat(props) {
+    console.log(props)
     return (
         <>
+            <ToastComp setShowToast={props.setShowToast} showToast={props.showToast} toastData={props.toastData} toastColor={props.toastColor} />
             <div className='chatBox' id='chat'>
                 <EmojiPicker
                     show={props.emojiPicker}
@@ -18,10 +21,16 @@ function Chat(props) {
                 <SignUp
                     show={props.signupModalShow}
                     onHide={() => props.setSignupModalShow(false)}
+                    setShowToast={props.setShowToast}
+                    setToastData={props.setToastData}
+                    setToastColor={props.setToastColor}
                 />
                 <Login
                     show={props.loginModalShow}
                     onHide={() => props.setLoginModalShow(false)}
+                    setShowToast={props.setShowToast}
+                    setToastData={props.setToastData}
+                    setToastColor={props.setToastColor}
                 />
                 <nav className="navbar">
                     <img className="navbar-brand" style={{ height: "90px" }} alt="logo" src={logo} />

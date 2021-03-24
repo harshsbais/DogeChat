@@ -20,8 +20,11 @@ function SignUp(props) {
             bake_cookie('userID', new Date().getTime().toString());
             props.onHide();
         }
-        else
-            alert("password not matching")
+        else {
+            props.setShowToast(true);
+            props.setToastColor("red");
+            props.setToastData("Password does not match")
+        }
     }
     return (
         <Modal
