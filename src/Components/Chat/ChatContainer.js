@@ -88,10 +88,12 @@ function ChatContainer() {
     }
     const handleImageSelect = (e) => {
         console.log(e.target.files[0])
+        setShowToast(true);
+        setToastData(`${e.target.files[0].name} uploaded`);
+        setToastColor("green")
         if (e.target.files[0])
             setImage(e.target.files[0]);
     }
-    console.log("image: ", image);
     const handleSubmit = (e) => {
         e.preventDefault();
         let img_add;
