@@ -100,6 +100,9 @@ function ChatContainer() {
         let mess = message;
         mess.time = new Date().getTime().toString();
         if (image) {
+            setShowToast(true);
+            setToastData("Uploading Image");
+            setToastColor("green")
             const uploadTask = storage.ref(`images/${mess.time}.png`).put(image);
             uploadTask.on(
                 "state_changed",
@@ -126,6 +129,7 @@ function ChatContainer() {
                             scroll.current = true;
                             setMessage({});
                             setMessages(msg);
+                            setShowToast(false);
                         });
                 }
             );
