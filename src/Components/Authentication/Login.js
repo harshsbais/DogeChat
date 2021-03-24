@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Modal, Form } from 'react-bootstrap';
 import { bake_cookie } from 'sfcookies';
-function UserInfo(props) {
-    const [user, setUser] = useState('');
+function Login(props) {
+    const [password, setPassword] = useState('');
     const setUserInfo = (e) => {
         e.preventDefault();
-        bake_cookie('userName', user);
-        bake_cookie('userID', new Date().getTime().toString());
-        props.onHide();
+        console.log(password)
+        // bake_cookie('userName', userData);
+        // bake_cookie('userID', new Date().getTime().toString());
+        // props.onHide();
     }
     return (
         <Modal
@@ -18,8 +19,11 @@ function UserInfo(props) {
             centered>
             <Modal.Body>
                 <Form onSubmit={setUserInfo}>
-                    <label htmlFor='user'>Enter Your Name</label>
-                    <input className="ml-3 mt-1" name='user' value={user} onChange={(e) => setUser(e.target.value)} />
+                    <center><h1>Welcome Back 👋</h1>
+                        <label htmlFor='user'>Password</label>
+                        <input type="password" className="ml-3 mt-1" name='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <br />
+                    </center>
                     <button className="ml-3 mt-1 float-right" style={{ backgroundColor: 'white', color: 'black', border: 'none' }}><i className="fa fa-arrow-right"></i></button>
                 </Form>
             </Modal.Body>
@@ -27,5 +31,5 @@ function UserInfo(props) {
     )
 }
 
-export default UserInfo
+export default Login
 
