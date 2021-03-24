@@ -9,14 +9,15 @@ function SignUp(props) {
         setUserData({ ...userData, [e.target.name]: e.target.value })
     }
     const handleSwitchChange = (checked) => {
-        setUserData({ ...userData, ['remember']: checked })
+        setUserData({ ...userData, ['remember']: checked }) // eslint-disable-line no-useless-computed-key
     }
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(userData);
         if (password === password2) {
+            if (remember)
+                bake_cookie('password', userData.password);
             bake_cookie('userName', userData.username);
-            bake_cookie('password', userData.password);
             bake_cookie('userID', new Date().getTime().toString());
             props.onHide();
         }
