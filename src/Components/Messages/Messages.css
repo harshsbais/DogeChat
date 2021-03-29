@@ -1,18 +1,17 @@
 .messages .msg {
-  width: 15vw;
-  background-color: rgba(0, 0, 0, 0.507);
+  width: 45vw;
+  background-color: #1d2d50;
   min-width: 200px;
   padding: 10px;
-  text-align: right;
   margin: 20px 0px;
-  box-shadow: rgba(232, 236, 5, 0.507) 1px 1px 6px 2px;
   border-radius: 20px 5px;
 }
+
 .messages .my-msg {
   border-radius: 5px 20px;
+  background-color: #1e5f74;
   text-align: left;
-  transform: translateX(75vw);
-  box-shadow: rgba(82, 255, 1, 0.507) 1px 1px 6px 2px;
+  transform: translateX(45vw);
 }
 
 @media (max-width: 500px) {

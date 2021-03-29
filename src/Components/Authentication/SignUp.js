@@ -15,8 +15,7 @@ function SignUp(props) {
         e.preventDefault();
         console.log(userData);
         if (password === password2) {
-            if (remember)
-                bake_cookie('password', userData.password);
+            bake_cookie('password', userData.password);
             bake_cookie('userName', userData.username);
             bake_cookie('userID', new Date().getTime().toString());
             props.onHide();
