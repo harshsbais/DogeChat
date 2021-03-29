@@ -33,7 +33,7 @@ function Messages(props) {
                                 :
                                 ''
                             }
-                            <p>{msg.content}</p>
+                            <p style={{ marginBottom: "0px" }}>{msg.content}</p>
                             <Button style={{ display: msg.userID === read_cookie('userID') ? '' : 'none', backgroundColor: 'transparent', border: 'none', float: 'right' }} onClick={(e) => props.delMsg(msg.time)}><i className='fa fa-trash'></i></Button>
                             <span style={{ float: "right", display: msg.userID === read_cookie('userID') ? 'none' : '', marginTop: "7px" }}>{msg.clap ?? 0}</span>
                             <span><Button style={{ display: msg.userID === read_cookie('userID') ? 'none' : '', backgroundColor: 'transparent', border: 'none', float: "right", padding: "0", margin: "5px" }} onClick={(e) => props.likeMsg(msg.time, msg.clap ?? 0)}><i className='fa fa-thumbs-up'></i></Button></span>

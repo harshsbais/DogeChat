@@ -49,7 +49,7 @@ function Chat(props) {
                     </div>
                     <img className="mr-4 pb-1" style={{ height: '30px' }} src={logo} alt="emoji-picker" onClick={(e) => props.setEmojiPicker(true)} />
                     <input autocomplete="off" className="mt-4" ref={props.msgBox} required value={props.message.content ?? ''} name='content' onChange={props.handleChange} style={{ width: '70%', outline: 'none', padding: '0px 10px' }} />
-                    <button className="ml-4" style={{ backgroundColor: '#1b2021', color: 'white', border: 'none' }} type="submit"><i className="fa fa-arrow-right"></i></button>
+                    <button className="ml-4" style={{ background: 'none', color: 'white', border: 'none' }} type="submit"><i className="fa fa-arrow-right"></i></button>
                 </Form>
             </div>
         </>
