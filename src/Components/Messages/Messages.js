@@ -24,8 +24,8 @@ function Messages(props) {
                 return (
                     <Row style={{ width: '100%' }} key={msg.time}>
                         <div className={`msg ${(msg.userID === read_cookie('userID')) ? 'my-msg' : ''}`}>
-                            <span style={{ color: '#1597f9', fontSize: '12px' }}>{msg.name.length > 0 ? msg.name : "Anonymous"}</span>
-                            <span style={{ color: '#1597f9', fontSize: '10px', float: "right" }}>
+                            <span style={{ color: '#00fff5', fontSize: '12px' }}>{msg.name.length > 0 ? msg.name : "Anonymous"}</span>
+                            <span style={{ color: '#00fff5', fontSize: '10px', float: "right" }}>
                                 {convertTime(msg.time)} ago
                             </span>
                             {msg.url ?
