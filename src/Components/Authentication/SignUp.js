@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { Modal, Form } from 'react-bootstrap';
-import Switch from "react-switch";
 import { bake_cookie } from 'sfcookies';
 function SignUp(props) {
-    const [userData, setUserData] = useState({});
+    const [userData, setUserData] = useState({
+        remember: true
+    });
     const { username, password, password2, remember } = userData;
     const setUserInfo = (e) => {
         setUserData({ ...userData, [e.target.name]: e.target.value })
-    }
-    const handleSwitchChange = (checked) => {
-        setUserData({ ...userData, ['remember']: checked }) // eslint-disable-line no-useless-computed-key
     }
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(userData);
         if (password === password2) {
-            bake_cookie('password', userData.password);
+            if (remember)
+                bake_cookie('password', userData.password);
             bake_cookie('userName', userData.username);
             bake_cookie('userID', new Date().getTime().toString());
             props.onHide();
@@ -34,20 +33,20 @@ function SignUp(props) {
             aria-labelledby="contained-modal-title-vcenter"
             centered>
             <Modal.Body>
-                <Form onSubmit={handleSubmit}>
-                    <center><h1>Welcome to Doge Chat</h1>
-                        <label htmlFor='user'>Username</label>
-                        <input className="ml-3 mt-1" name='username' value={username} onChange={setUserInfo} />
-                        <br />
-                        <label htmlFor='user'>Password</label>
-                        <input type="password" className="ml-3 mt-1" name='password' value={password} onChange={setUserInfo} />
-                        <br />
-                        <label htmlFor='user'>Confirm Password</label>
-                        <input type="password" className="ml-3 mt-1" name='password2' value={password2} onChange={setUserInfo} />
-                    </center>
-                    <label>Remember Me?</label>
-                    <Switch name="remember" onChange={handleSwitchChange} checked={remember ?? 'true'} />
-                    <button className="ml-3 mt-1 float-right" style={{ backgroundColor: 'white', color: 'black', border: 'none' }}><i className="fa fa-arrow-right"></i></button>
+                <Form onSubmit={handleSubmit} style={{ color: "white", opacity: "87%" }}>
+                    <center><h1 className="mb-5">Welcome to Doge Chat</h1></center>
+                    <label htmlFor='user' style={{ margin: '20px 20px' }}>Username</label>
+                    <input autocomplete="off" className="float-right mt-2" name='username' style={{ width: "45%" }} value={username} onChange={setUserInfo} />
+                    <br />
+                    <label htmlFor='user' style={{ margin: '20px 20px' }}>Password</label>
+                    <input autocomplete="off" type="password" className="float-right" name='password' style={{ width: "45%" }} value={password} onChange={setUserInfo} />
+                    <br />
+                    <label htmlFor='user' style={{ margin: '20px 20px' }}>Confirm Password</label>
+                    <input autocomplete="off" type="password" className="float-right" name='password2' style={{ width: "45%" }} value={password2} onChange={setUserInfo} />
+                    <br />
+                    <span><label>Remember Me?</label></span>
+                    <span style={{ margin: "7px 10px" }}><input type="checkbox" onChange={() => setUserData({ ...userData, ["remember"]: !remember })} defaultChecked={remember} /></span>
+                    <button className="ml-3 mt-1 float-right" style={{ background: 'none', color: 'white', border: 'none' }}><i className="fa fa-arrow-right"></i></button>
                 </Form>
             </Modal.Body>
         </Modal>
