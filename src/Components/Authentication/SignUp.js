@@ -45,7 +45,7 @@ function SignUp(props) {
                     <input autocomplete="off" type="password" className="float-right" name='password2' style={{ width: "45%" }} value={password2} onChange={setUserInfo} />
                     <br />
                     <span><label>Remember Me?</label></span>
-                    <span style={{ margin: "7px 10px" }}><input type="checkbox" onChange={() => setUserData({ ...userData, ["remember"]: !remember })} defaultChecked={remember} /></span>
+                    <span style={{ margin: "7px 10px" }}><input type="checkbox" onChange={() => setUserData({ ...userData, "remember": !remember })} defaultChecked={remember} /></span>
                     <button className="ml-3 mt-1 float-right" style={{ background: 'none', color: 'white', border: 'none' }}><i className="fa fa-arrow-right"></i></button>
                 </Form>
             </Modal.Body>
