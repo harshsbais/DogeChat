@@ -1,6 +1,6 @@
 .messages .msg {
   width: 45vw;
-  background-color: #1d2d50;
+  background-color: #182952;
   min-width: 200px;
   padding: 10px;
   margin: 20px 0px;
@@ -9,7 +9,7 @@
 
 .messages .my-msg {
   border-radius: 5px 20px;
-  background-color: #1e5f74;
+  background-color: #2b3595;
   text-align: left;
   transform: translateX(45vw);
 }

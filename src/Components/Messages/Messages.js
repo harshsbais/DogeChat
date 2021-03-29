@@ -24,8 +24,8 @@ function Messages(props) {
                 return (
                     <Row style={{ width: '100%' }} key={msg.time}>
                         <div className={`msg ${(msg.userID === read_cookie('userID')) ? 'my-msg' : ''}`}>
-                            <span style={{ color: '#F65058FF', fontSize: '12px' }}>{msg.name.length > 0 ? msg.name : "Anonymous"}</span>
-                            <span style={{ color: '#F2AA4CFF', fontSize: '10px', float: "right" }}>
+                            <span style={{ color: '#1597f9', fontSize: '12px' }}>{msg.name.length > 0 ? msg.name : "Anonymous"}</span>
+                            <span style={{ color: '#1597f9', fontSize: '10px', float: "right" }}>
                                 {convertTime(msg.time)} ago
                             </span>
                             {msg.url ?
@@ -33,10 +33,10 @@ function Messages(props) {
                                 :
                                 ''
                             }
-                            <p style={{ marginBottom: "0px" }}>{msg.content}</p>
+                            <p style={{ marginBottom: "0px", opacity: "87%" }}>{msg.content}</p>
                             <Button style={{ display: msg.userID === read_cookie('userID') ? '' : 'none', backgroundColor: 'transparent', border: 'none', float: 'right' }} onClick={(e) => props.delMsg(msg.time)}><i className='fa fa-trash'></i></Button>
                             <span style={{ float: "right", display: msg.userID === read_cookie('userID') ? 'none' : '', marginTop: "7px" }}>{msg.clap ?? 0}</span>
-                            <span><Button style={{ display: msg.userID === read_cookie('userID') ? 'none' : '', backgroundColor: 'transparent', border: 'none', float: "right", padding: "0", margin: "5px" }} onClick={(e) => props.likeMsg(msg.time, msg.clap ?? 0)}><i className='fa fa-thumbs-up'></i></Button></span>
+                            <span><Button style={{ display: msg.userID === read_cookie('userID') ? 'none' : '', backgroundColor: 'transparent', border: 'none', float: "right", padding: "0", margin: "5px", opacity: "87%" }} onClick={(e) => props.likeMsg(msg.time, msg.clap ?? 0)}><i className='fa fa-thumbs-up'></i></Button></span>
                         </div>
                     </Row>
                 )
