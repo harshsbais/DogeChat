@@ -87,12 +87,12 @@ function ChatContainer() {
         setMessage({ ...message, [e.target.name]: e.target.value });
     }
     const handleImageSelect = (e) => {
-        console.log(e.target.files[0])
-        setShowToast(true);
-        setToastData(`${e.target.files[0].name} uploaded`);
-        setToastColor("green")
-        if (e.target.files[0])
+        if (e.target.files[0]) {
+            setShowToast(true);
+            setToastData(`${e.target.files[0].name} uploaded`);
+            setToastColor("green")
             setImage(e.target.files[0]);
+        }
     }
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -130,6 +130,7 @@ function ChatContainer() {
                             setMessage({});
                             setMessages(msg);
                             setShowToast(false);
+                            setImage(null);
                         });
                 }
             );
