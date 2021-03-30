@@ -41,15 +41,15 @@ function Chat(props) {
             <div ref={props.msgEnd}></div>
             <div className='footer'>
                 <Form onSubmit={props.handleSubmit}>
-                    <div class="image-upload" style={{ float: 'left', marginTop: '27px', marginLeft: '8vw' }}>
+                    <div class="image-upload" style={{ float: 'left', marginTop: '27px', marginLeft: '8%' }}>
                         <label for="file-input">
                             <i className="fa fa-upload" style={{ height: '3-px', color: 'white' }} alt="upload" />
                         </label>
                         <input id="file-input" onChange={props.handleImageSelect} type="file" />
                     </div>
-                    <img className="mr-4 pb-1" style={{ height: '30px' }} src={logo} alt="emoji-picker" onClick={(e) => props.setEmojiPicker(true)} />
-                    <input autocomplete="off" className="mt-4" ref={props.msgBox} required value={props.message.content ?? ''} name='content' onChange={props.handleChange} style={{ width: '70%', outline: 'none', padding: '0px 10px' }} />
-                    <button className="ml-4" style={{ background: 'none', color: 'white', border: 'none' }} type="submit"><i className="fa fa-arrow-right"></i></button>
+                    <img className="pb-1" style={{ height: '30px', marginRight: "2%" }} src={logo} alt="emoji-picker" onClick={(e) => props.setEmojiPicker(true)} />
+                    <input autocomplete="off" className="mt-4 mx-auto" ref={props.msgBox} required value={props.message.content ?? ''} name='content' onChange={props.handleChange} style={{ width: '60%', outline: 'none', padding: '0px 10px' }} />
+                    <button style={{ background: 'none', color: 'white', border: 'none', marginLeft: "2%" }} type="submit"><i className="fa fa-arrow-right"></i></button>
                 </Form>
             </div>
         </>
