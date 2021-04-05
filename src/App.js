@@ -1,9 +1,13 @@
 import ChatContainer from './Components/Chat/ChatContainer'
+import { Provider } from 'react-redux';
+import store from './Redux/store';
 function App() {
   return (
-    <div className="App">
-      <ChatContainer />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <ChatContainer />
+      </div>
+    </Provider>
   );
 }
 

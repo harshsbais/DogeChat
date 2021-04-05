@@ -4,7 +4,11 @@ import Chat from './Chat';
 import './Chat.css'
 import db from "../../firebase.js";
 import { storage } from "../../firebase.js";
+import { useSelector, useDispatch } from 'react-redux';
+import { getUserInfo } from '../../Redux/UserInfo/userActions'
 function ChatContainer() {
+    const dispatch = useDispatch();
+    const username = useSelector(state => state.userName)
     const [signupModalShow, setSignupModalShow] = useState(false);
     const [loginModalShow, setLoginModalShow] = useState(false);
     const [toastData, setToastData] = useState('');
@@ -77,8 +81,10 @@ function ChatContainer() {
             msgEnd?.current.scrollIntoView({ behavior: "auto" });
     }, [messages])
     useEffect(() => {
-        if (read_cookie('userID').length !== 0 && read_cookie('userName').length !== 0 && read_cookie('password').length !== 0)
+        if (read_cookie('userID').length !== 0 && read_cookie('userName').length !== 0 && read_cookie('password').length !== 0) {
+            dispatch(getUserInfo(read_cookie('userName')))
             setLoginModalShow(true);
+        }
         else
             setSignupModalShow(true);
         setMsg();
