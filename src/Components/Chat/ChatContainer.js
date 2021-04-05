@@ -143,7 +143,7 @@ function ChatContainer() {
         }
         else {
             let mess = message;
-            mess.name = read_cookie('userName');
+            mess.name = username;
             mess.userID = read_cookie('userID');
             if (img_add)
                 mess.url = img_add;

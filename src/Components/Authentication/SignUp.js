@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Modal, Form } from 'react-bootstrap';
 import { bake_cookie } from 'sfcookies';
+import { useDispatch } from 'react-redux';
+import { getUserInfo } from '../../Redux/UserInfo/userActions';
 function SignUp(props) {
+    const dispatch = useDispatch();
     const [userData, setUserData] = useState({
         remember: true
     });
@@ -16,6 +19,7 @@ function SignUp(props) {
             if (remember)
                 bake_cookie('password', userData.password);
             bake_cookie('userName', userData.username);
+            dispatch(getUserInfo(userData.username));
             bake_cookie('userID', new Date().getTime().toString());
             props.onHide();
         }
