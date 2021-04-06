@@ -9,7 +9,7 @@ import ToastComp from '../Toast/ToastComp'
 function Chat(props) {
     return (
         <>
-            <ToastComp setShowToast={props.setShowToast} showToast={props.showToast} toastData={props.toastData} toastColor={props.toastColor} />
+            <ToastComp />
             <div className='chatBox' id='chat'>
                 <EmojiPicker
                     show={props.emojiPicker}

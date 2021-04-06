@@ -11,3 +11,10 @@ export const loginModal = (isOpen) => {
         payload: isOpen
     }
 }
+
+export const emojiModal = (isOpen) => {
+    return {
+        type: 'EMOJI',
+        payload: isOpen
+    }
+}

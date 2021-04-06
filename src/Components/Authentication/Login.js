@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Form } from 'react-bootstrap';
 import { read_cookie } from 'sfcookies';
 import "./Auth.css"
+import { useDispatch } from 'react-redux';
+import { toastOpen, toastData, toastColor } from '../../Redux/Toast/toastActions'
 function Login(props) {
+    const dispatch = useDispatch();
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     useEffect(() => {
@@ -15,9 +18,9 @@ function Login(props) {
         if (pwd === password)
             props.onHide();
         else {
-            props.setShowToast(true);
-            props.setToastColor("red");
-            props.setToastData("Password Incorrect")
+            dispatch(toastOpen(true))
+            dispatch(toastData("Password Incorrect"))
+            dispatch(toastColor("red"))
         }
     }
     return (

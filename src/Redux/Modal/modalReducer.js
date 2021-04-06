@@ -1,6 +1,7 @@
 const initialState = {
     signup: false,
-    login: false
+    login: false,
+    emoji: false
 }
 
 const userReducer = (state = initialState, action) => {
@@ -12,6 +13,10 @@ const userReducer = (state = initialState, action) => {
         case 'LOGIN': return {
             ...state,
             login: action.payload
+        }
+        case 'EMOJI': return {
+            ...state,
+            emoji: action.payload
         }
         default: return state;
     }

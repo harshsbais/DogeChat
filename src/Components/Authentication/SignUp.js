@@ -3,6 +3,7 @@ import { Modal, Form } from 'react-bootstrap';
 import { bake_cookie } from 'sfcookies';
 import { useDispatch } from 'react-redux';
 import { getUserInfo } from '../../Redux/UserInfo/userActions';
+import { toastOpen, toastData, toastColor } from '../../Redux/Toast/toastActions'
 function SignUp(props) {
     const dispatch = useDispatch();
     const [userData, setUserData] = useState({
@@ -24,9 +25,9 @@ function SignUp(props) {
             props.onHide();
         }
         else {
-            props.setShowToast(true);
-            props.setToastColor("red");
-            props.setToastData("Password does not match")
+            dispatch(toastOpen(true))
+            dispatch(toastData("Password Incorrect"))
+            dispatch(toastColor("red"))
         }
     }
     return (
