@@ -7,6 +7,7 @@ import { toastOpen, toastData, toastColor } from '../../Redux/Toast/toastActions
 import { signupModal } from '../../Redux/Modal/modalActions';
 function SignUp() {
     const dispatch = useDispatch();
+    let likes = [];
     const [userData, setUserData] = useState({
         remember: true
     });
@@ -24,6 +25,7 @@ function SignUp() {
             dispatch(getUserInfo(userData.username));
             bake_cookie('userID', new Date().getTime().toString());
             dispatch(signupModal(false))
+            bake_cookie('likes', likes);
         }
         else {
             dispatch(toastOpen(true))

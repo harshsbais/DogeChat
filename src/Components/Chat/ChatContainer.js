@@ -26,39 +26,31 @@ function ChatContainer() {
             }
             )
     }
-    const delMsg = (id) => {
+    const delMsg = (msg) => {
         scroll.current = false;
-        var jobskill_query = db.collection('messages').where('time', '==', id);
+        var jobskill_query = db.collection('messages').where('time', '==', msg.time);
         jobskill_query.get().then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
                 doc.ref.delete();
             });
         });
-        var imgRef = storage.ref().child(`images/${id}.png`);
-        imgRef.delete().then(() => {
-            console.log('deleted')
-        }).catch((error) => {
-            console.log(error)
-        });
-
+        if (msg.url) {
+            let imgRef = storage.ref().child(`images/${msg.time}.png`);
+            imgRef.delete().then(() => {
+                console.log('deleted')
+            }).catch((error) => {
+                console.log(error)
+            });
+        }
     }
     const likeMsg = (id, claps) => {
-        var likes;
+        let likes;
         scroll.current = false;
-        var is_there = false;
-        if (!read_cookie('likes')) {
-            likes = [];
-            bake_cookie('likes', likes);
-        }
-        else
-            likes = read_cookie('likes');
-        likes.map((like, idx) => {
-            if (like === id) {
-                is_there = true;
-                likes.splice(idx, 1);
-            }
-            return null;
-        })
+        let is_there = false;
+        likes = read_cookie('likes');
+        let len = likes.length;
+        likes = likes.filter(like => like !== id);
+        is_there = len > likes.length ? true : false;
         if (!is_there)
             likes.push(id);
         var jobskill_query = db.collection('messages').where('time', '==', id);
@@ -98,16 +90,30 @@ function ChatContainer() {
             setImage(e.target.files[0]);
         }
     }
+    const upload = (time, url) => {
+        let mess = message;
+        mess.time = time;
+        mess.name = username;
+        mess.userID = userId;
+        if (url)
+            mess.url = url;
+        setMessage(mess);
+        db.collection("messages").add(message);
+        let msg = messages;
+        msg.push(mess);
+        scroll.current = true;
+        setMessage({});
+        setImage(null);
+        setMessages(msg);
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
-        let img_add;
-        let mess = message;
-        mess.time = new Date().getTime().toString();
+        let time = new Date().getTime().toString();
         if (image) {
             dispatch(toastOpen(true));
             dispatch(toastData("Uploading Image"));
             dispatch(toastColor("green"));
-            const uploadTask = storage.ref(`images/${mess.time}.png`).put(image);
+            const uploadTask = storage.ref(`images/${time}.png`).put(image);
             uploadTask.on(
                 "state_changed",
                 snapshot => { },
@@ -117,42 +123,17 @@ function ChatContainer() {
                 () => {
                     storage
                         .ref("images")
-                        .child(`${mess.time}.png`)
+                        .child(`${time}.png`)
                         .getDownloadURL()
                         .then(url => {
-                            console.log(url);
-                            img_add = url;
-                            mess.name = username;
-                            mess.userID = userId;
-                            if (img_add)
-                                mess.url = img_add;
-                            setMessage(mess);
-                            db.collection("messages").add(message);
-                            let msg = messages;
-                            msg.push(mess);
-                            scroll.current = true;
-                            setMessage({});
-                            setMessages(msg);
-                            dispatch(toastOpen(false))
-                            setImage(null);
+                            if (url)
+                                upload(time, url);
                         });
                 }
             );
         }
-        else {
-            let mess = message;
-            mess.name = username;
-            mess.userID = userId;
-            if (img_add)
-                mess.url = img_add;
-            setMessage(mess);
-            db.collection("messages").add(message);
-            let msg = messages;
-            msg.push(mess);
-            scroll.current = true;
-            setMessage({});
-            setMessages(msg);
-        }
+        else
+            upload(time);
     }
     return (
         <>
