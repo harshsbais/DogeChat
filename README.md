@@ -37,7 +37,6 @@ Here is the link to the deployed app :- https://doge-chat.netlify.app/
 * Change directory to JagratiWebApp `$ cd DogeChat`
 * Add a reference to the original repository  
    `$ git remote add upstream https://github.com/harshsbais/DogeChat.git`
-* `cd DogeChat`
 * `npm i`
 * `npm start`
 
