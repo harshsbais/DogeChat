@@ -18,14 +18,8 @@ function Chat(props) {
                     message={props.message}
                     setMessage={props.setMessage}
                 />
-                <SignUp
-                    show={props.signupModalShow}
-                    onHide={() => props.setSignupModalShow(false)}
-                />
-                <Login
-                    show={props.loginModalShow}
-                    onHide={() => props.setLoginModalShow(false)}
-                />
+                <SignUp />
+                <Login />
                 <nav className="navbar">
                     <img className="navbar-brand" style={{ height: "90px" }} alt="logo" src={logo} />
                     <p className='mx-auto pt-1 navbar-inner' style={{ fontSize: '40px', fontFamily: "'Redressed', cursive" }}>DogeChat</p>

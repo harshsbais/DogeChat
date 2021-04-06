@@ -30,7 +30,7 @@ function Messages(props) {
                                 {convertTime(msg.time)} ago
                             </span>
                             {msg.url ?
-                                <img src={msg.url} style={{ height: '400px', maxWidth: '100%' }} alt='meme' />
+                                <a rel="noreferrer" href={msg.url} target="_blank"><img src={msg.url} style={{ height: '400px', maxWidth: '100%' }} alt='meme' /></a>
                                 :
                                 ''
                             }

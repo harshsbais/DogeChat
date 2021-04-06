@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Form } from 'react-bootstrap';
 import { read_cookie } from 'sfcookies';
 import "./Auth.css"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toastOpen, toastData, toastColor } from '../../Redux/Toast/toastActions'
-function Login(props) {
+import { loginModal } from '../../Redux/Modal/modalActions';
+function Login() {
     const dispatch = useDispatch();
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
@@ -15,7 +16,7 @@ function Login(props) {
         e.preventDefault();
         let pwd = read_cookie("password");
         if (pwd === password)
-            props.onHide();
+            dispatch(loginModal(false))
         else {
             dispatch(toastOpen(true))
             dispatch(toastData("Password Incorrect"))
@@ -24,7 +25,7 @@ function Login(props) {
     }
     return (
         <Modal
-            {...props}
+            show={useSelector(state => state.modal.login)}
             size="lg"
             backdrop="static"
             aria-labelledby="contained-modal-title-vcenter"

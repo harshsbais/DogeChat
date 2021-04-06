@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Modal, Form } from 'react-bootstrap';
 import { bake_cookie } from 'sfcookies';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getUserInfo } from '../../Redux/UserInfo/userActions';
 import { toastOpen, toastData, toastColor } from '../../Redux/Toast/toastActions'
-function SignUp(props) {
+import { signupModal } from '../../Redux/Modal/modalActions';
+function SignUp() {
     const dispatch = useDispatch();
     const [userData, setUserData] = useState({
         remember: true
@@ -22,7 +23,7 @@ function SignUp(props) {
             bake_cookie('userName', userData.username);
             dispatch(getUserInfo(userData.username));
             bake_cookie('userID', new Date().getTime().toString());
-            props.onHide();
+            dispatch(signupModal(false))
         }
         else {
             dispatch(toastOpen(true))
@@ -32,7 +33,7 @@ function SignUp(props) {
     }
     return (
         <Modal
-            {...props}
+            show={useSelector(state => state.modal.signup)}
             size="lg"
             backdrop="static"
             aria-labelledby="contained-modal-title-vcenter"

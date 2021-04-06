@@ -7,16 +7,13 @@ import { storage } from "../../firebase.js";
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserInfo, getUserId } from '../../Redux/UserInfo/userActions'
 import { toastOpen, toastData, toastColor } from '../../Redux/Toast/toastActions'
+import { loginModal, signupModal } from '../../Redux/Modal/modalActions';
 function ChatContainer() {
     const dispatch = useDispatch();
     const username = useSelector(state => state.user.name)
     const userId = useSelector(state => state.user.id)
-    const [signupModalShow, setSignupModalShow] = useState(false);
-    const [loginModalShow, setLoginModalShow] = useState(false);
     const [message, setMessage] = useState({});
     const [messages, setMessages] = useState([]);
-    const [emojiPicker, setEmojiPicker] = useState(false);
-    const { content } = message;
     const msgEnd = useRef(null);
     const msgBox = useRef(null);
     const scroll = useRef(true);
@@ -75,18 +72,19 @@ function ChatContainer() {
         bake_cookie('likes', likes);
     }
     useEffect(() => {
-        msgBox?.current.focus();
-        if (scroll?.current)
+        if (scroll?.current) {
             msgEnd?.current.scrollIntoView({ behavior: "auto" });
+            msgBox?.current.focus();
+        }
     }, [messages])
     useEffect(() => {
         if (read_cookie('userID').length !== 0 && read_cookie('userName').length !== 0 && read_cookie('password').length !== 0) {
-            dispatch(getUserInfo(read_cookie('userName')))
-            dispatch(getUserId(read_cookie('userID')))
-            setLoginModalShow(true);
+            dispatch(getUserInfo(read_cookie('userName')));
+            dispatch(getUserId(read_cookie('userID')));
+            dispatch(loginModal(true));
         }
         else
-            setSignupModalShow(true);
+            dispatch(signupModal(true));
         setMsg();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
     const handleChange = (e) => {
@@ -94,9 +92,9 @@ function ChatContainer() {
     }
     const handleImageSelect = (e) => {
         if (e.target.files[0]) {
-            dispatch(toastOpen(true))
-            dispatch(toastData(`${e.target.files[0].name} uploaded`))
-            dispatch(toastColor("green"))
+            dispatch(toastOpen(true));
+            dispatch(toastData(`${e.target.files[0].name} uploaded`));
+            dispatch(toastColor("green"));
             setImage(e.target.files[0]);
         }
     }
@@ -106,9 +104,9 @@ function ChatContainer() {
         let mess = message;
         mess.time = new Date().getTime().toString();
         if (image) {
-            dispatch(toastOpen(true))
-            dispatch(toastData("Uploading Image"))
-            dispatch(toastColor("green"))
+            dispatch(toastOpen(true));
+            dispatch(toastData("Uploading Image"));
+            dispatch(toastColor("green"));
             const uploadTask = storage.ref(`images/${mess.time}.png`).put(image);
             uploadTask.on(
                 "state_changed",
@@ -158,7 +156,17 @@ function ChatContainer() {
     }
     return (
         <>
-            <Chat setLoginModalShow={setLoginModalShow} loginModalShow={loginModalShow} setSignupModalShow={setSignupModalShow} signupModalShow={signupModalShow} handleImageSelect={handleImageSelect} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} handleSubmit={handleSubmit} msgBox={msgBox} emojiPicker={emojiPicker} setEmojiPicker={setEmojiPicker} message={message} setMessage={setMessage} delMsg={delMsg} likeMsg={likeMsg} />
+            <Chat
+                handleImageSelect={handleImageSelect}
+                messages={messages}
+                msgEnd={msgEnd}
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                msgBox={msgBox}
+                message={message}
+                setMessage={setMessage}
+                delMsg={delMsg}
+                likeMsg={likeMsg} />
         </>
     )
 }
