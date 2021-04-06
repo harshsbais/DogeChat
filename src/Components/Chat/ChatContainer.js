@@ -5,10 +5,11 @@ import './Chat.css'
 import db from "../../firebase.js";
 import { storage } from "../../firebase.js";
 import { useSelector, useDispatch } from 'react-redux';
-import { getUserInfo } from '../../Redux/UserInfo/userActions'
+import { getUserInfo, getUserId } from '../../Redux/UserInfo/userActions'
 function ChatContainer() {
     const dispatch = useDispatch();
     const username = useSelector(state => state.userName)
+    const userId = useSelector(state => state.userId)
     const [signupModalShow, setSignupModalShow] = useState(false);
     const [loginModalShow, setLoginModalShow] = useState(false);
     const [toastData, setToastData] = useState('');
@@ -83,6 +84,7 @@ function ChatContainer() {
     useEffect(() => {
         if (read_cookie('userID').length !== 0 && read_cookie('userName').length !== 0 && read_cookie('password').length !== 0) {
             dispatch(getUserInfo(read_cookie('userName')))
+            dispatch(getUserId(read_cookie('userID')))
             setLoginModalShow(true);
         }
         else
@@ -124,8 +126,8 @@ function ChatContainer() {
                         .then(url => {
                             console.log(url);
                             img_add = url;
-                            mess.name = read_cookie('userName');
-                            mess.userID = read_cookie('userID');
+                            mess.name = username;
+                            mess.userID = userId;
                             if (img_add)
                                 mess.url = img_add;
                             setMessage(mess);
@@ -144,7 +146,7 @@ function ChatContainer() {
         else {
             let mess = message;
             mess.name = username;
-            mess.userID = read_cookie('userID');
+            mess.userID = userId;
             if (img_add)
                 mess.url = img_add;
             setMessage(mess);

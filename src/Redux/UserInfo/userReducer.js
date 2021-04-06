@@ -1,12 +1,17 @@
 const initialState = {
-    userName: 'hello world',
+    userName: '',
+    userId: ''
 }
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'USER_INFO': return {
+        case 'USER_NAME': return {
             ...state,
             userName: action.payload
+        }
+        case 'USER_ID': return {
+            ...state,
+            userId: action.payload
         }
         default: return state;
     }

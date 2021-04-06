@@ -1,9 +1,10 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
-import { read_cookie } from 'sfcookies';
 import { Button } from 'react-bootstrap';
 import './Messages.css'
+import { useSelector } from 'react-redux';
 function Messages(props) {
+    const userId = useSelector(state => state.userId)
     const convertTime = (seconds) => {
         seconds = (new Date().getTime().toString() - seconds);
         seconds /= 1000;
@@ -23,7 +24,7 @@ function Messages(props) {
             {props.messages.map((msg) => {
                 return (
                     <Row style={{ width: '100%' }} key={msg.time}>
-                        <div className={`msg ${(msg.userID === read_cookie('userID')) ? 'my-msg' : ''}`}>
+                        <div className={`msg ${(msg.userID === userId) ? 'my-msg' : ''}`}>
                             <span style={{ color: '#00fff5', fontSize: '12px' }}>{msg.name.length > 0 ? msg.name : "Anonymous"}</span>
                             <span style={{ color: '#00fff5', fontSize: '10px', float: "right" }}>
                                 {convertTime(msg.time)} ago
@@ -34,9 +35,9 @@ function Messages(props) {
                                 ''
                             }
                             <p style={{ marginBottom: "0px", opacity: "87%" }}>{msg.content}</p>
-                            <Button style={{ display: msg.userID === read_cookie('userID') ? '' : 'none', backgroundColor: 'transparent', border: 'none', float: 'right' }} onClick={(e) => props.delMsg(msg.time)}><i className='fa fa-trash'></i></Button>
-                            <span style={{ float: "right", display: msg.userID === read_cookie('userID') ? 'none' : '', marginTop: "7px" }}>{msg.clap ?? 0}</span>
-                            <span><Button style={{ display: msg.userID === read_cookie('userID') ? 'none' : '', backgroundColor: 'transparent', border: 'none', float: "right", padding: "0", margin: "5px", opacity: "87%" }} onClick={(e) => props.likeMsg(msg.time, msg.clap ?? 0)}><i className='fa fa-thumbs-up'></i></Button></span>
+                            <Button style={{ display: msg.userID === userId ? '' : 'none', backgroundColor: 'transparent', border: 'none', float: 'right' }} onClick={(e) => props.delMsg(msg.time)}><i className='fa fa-trash'></i></Button>
+                            <span style={{ float: "right", display: msg.userID === userId ? 'none' : '', marginTop: "7px" }}>{msg.clap ?? 0}</span>
+                            <span><Button style={{ display: msg.userID === userId ? 'none' : '', backgroundColor: 'transparent', border: 'none', float: "right", padding: "0", margin: "5px", opacity: "87%" }} onClick={(e) => props.likeMsg(msg.time, msg.clap ?? 0)}><i className='fa fa-thumbs-up'></i></Button></span>
                         </div>
                     </Row>
                 )

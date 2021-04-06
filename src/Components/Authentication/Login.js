@@ -3,7 +3,6 @@ import { Modal, Form } from 'react-bootstrap';
 import { read_cookie } from 'sfcookies';
 import "./Auth.css"
 function Login(props) {
-    console.log(props);
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     useEffect(() => {

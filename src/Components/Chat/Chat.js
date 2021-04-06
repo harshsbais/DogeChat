@@ -7,7 +7,6 @@ import { Form } from 'react-bootstrap';
 import logo from '../../assets/logo.png'
 import ToastComp from '../Toast/ToastComp'
 function Chat(props) {
-    console.log(props)
     return (
         <>
             <ToastComp setShowToast={props.setShowToast} showToast={props.showToast} toastData={props.toastData} toastColor={props.toastColor} />
