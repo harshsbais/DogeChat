@@ -16,7 +16,7 @@ function EmojiPicker(props) {
         if (!msg.content)
             msg.content = emojiObject.emoji + ' ';
         else
-            msg.content += emojiObject.emoji + ' ';
+            msg.content += ' ' + emojiObject.emoji;
         props.setMessage(msg);
         forceUpdate();
     };

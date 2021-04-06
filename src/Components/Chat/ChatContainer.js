@@ -88,7 +88,7 @@ function ChatContainer() {
         else
             setSignupModalShow(true);
         setMsg();
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
     const handleChange = (e) => {
         setMessage({ ...message, [e.target.name]: e.target.value });
     }

@@ -33,12 +33,10 @@ Here is the link to the deployed app :- https://doge-chat.netlify.app/
 * Fork the Repository.
 * Clone the repository to your local machine `$ git clone https://github.com/<your-github-username>/DogeChat.git`
 * Change directory to DogeChat `$ cd DogeChat`
-* Clone the repository to your local machine `$ git clone https://github.com/<your-github-username>/DogeChat.git`
-* Change directory to JagratiWebApp `$ cd DogeChat`
 * Add a reference to the original repository  
    `$ git remote add upstream https://github.com/harshsbais/DogeChat.git`
-* `npm i`
-* `npm start`
+* `$ npm i`
+* `$ npm start`
 
 ### Contributing Guidelines 
   * Feel free to open an issue to report a bug or request a new feature.
@@ -51,7 +49,7 @@ Here is the link to the deployed app :- https://doge-chat.netlify.app/
 
   
 
-This app can be built on any platform. It can be Windows, linux , MacOS or any other. You only need the create-react-app feature and rest is in the Dependencies section.
+This app can be built on any platform. It can be Windows, linux , MacOS or any other.
 
   
 
