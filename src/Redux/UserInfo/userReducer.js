@@ -1,17 +1,17 @@
 const initialState = {
-    userName: '',
-    userId: ''
+    name: '',
+    id: ''
 }
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'USER_NAME': return {
             ...state,
-            userName: action.payload
+            name: action.payload
         }
         case 'USER_ID': return {
             ...state,
-            userId: action.payload
+            id: action.payload
         }
         default: return state;
     }

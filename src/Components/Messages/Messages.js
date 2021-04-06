@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import './Messages.css'
 import { useSelector } from 'react-redux';
 function Messages(props) {
-    const userId = useSelector(state => state.userId)
+    const userId = useSelector(state => state.user.id)
     const convertTime = (seconds) => {
         seconds = (new Date().getTime().toString() - seconds);
         seconds /= 1000;

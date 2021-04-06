@@ -8,8 +8,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getUserInfo, getUserId } from '../../Redux/UserInfo/userActions'
 function ChatContainer() {
     const dispatch = useDispatch();
-    const username = useSelector(state => state.userName)
-    const userId = useSelector(state => state.userId)
+    const username = useSelector(state => state.user.name)
+    const userId = useSelector(state => state.user.id)
     const [signupModalShow, setSignupModalShow] = useState(false);
     const [loginModalShow, setLoginModalShow] = useState(false);
     const [toastData, setToastData] = useState('');
@@ -160,6 +160,7 @@ function ChatContainer() {
     }
     return (
         <>
+            {username}
             <Chat toastColor={toastColor} setToastColor={setToastColor} toastData={toastData} setToastData={setToastData} setLoginModalShow={setLoginModalShow} setShowToast={setShowToast} showToast={showToast} loginModalShow={loginModalShow} setSignupModalShow={setSignupModalShow} signupModalShow={signupModalShow} handleImageSelect={handleImageSelect} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} handleSubmit={handleSubmit} msgBox={msgBox} emojiPicker={emojiPicker} setEmojiPicker={setEmojiPicker} message={message} setMessage={setMessage} delMsg={delMsg} likeMsg={likeMsg} />
         </>
     )
