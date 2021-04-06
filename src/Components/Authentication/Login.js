@@ -13,7 +13,6 @@ function Login(props) {
     }, [])
     const setUserInfo = (e) => {
         e.preventDefault();
-        console.log(password)
         let pwd = read_cookie("password");
         if (pwd === password)
             props.onHide();

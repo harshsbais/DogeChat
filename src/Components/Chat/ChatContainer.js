@@ -158,7 +158,6 @@ function ChatContainer() {
     }
     return (
         <>
-            {userId}
             <Chat setLoginModalShow={setLoginModalShow} loginModalShow={loginModalShow} setSignupModalShow={setSignupModalShow} signupModalShow={signupModalShow} handleImageSelect={handleImageSelect} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} handleSubmit={handleSubmit} msgBox={msgBox} emojiPicker={emojiPicker} setEmojiPicker={setEmojiPicker} message={message} setMessage={setMessage} delMsg={delMsg} likeMsg={likeMsg} />
         </>
     )
