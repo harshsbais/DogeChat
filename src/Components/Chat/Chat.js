@@ -20,16 +20,10 @@ function Chat(props) {
                 <SignUp
                     show={props.signupModalShow}
                     onHide={() => props.setSignupModalShow(false)}
-                    setShowToast={props.setShowToast}
-                    setToastData={props.setToastData}
-                    setToastColor={props.setToastColor}
                 />
                 <Login
                     show={props.loginModalShow}
                     onHide={() => props.setLoginModalShow(false)}
-                    setShowToast={props.setShowToast}
-                    setToastData={props.setToastData}
-                    setToastColor={props.setToastColor}
                 />
                 <nav className="navbar">
                     <img className="navbar-brand" style={{ height: "90px" }} alt="logo" src={logo} />

@@ -6,15 +6,13 @@ import db from "../../firebase.js";
 import { storage } from "../../firebase.js";
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserInfo, getUserId } from '../../Redux/UserInfo/userActions'
+import { toastOpen, toastData, toastColor } from '../../Redux/Toast/toastActions'
 function ChatContainer() {
     const dispatch = useDispatch();
     const username = useSelector(state => state.user.name)
     const userId = useSelector(state => state.user.id)
     const [signupModalShow, setSignupModalShow] = useState(false);
     const [loginModalShow, setLoginModalShow] = useState(false);
-    const [toastData, setToastData] = useState('');
-    const [toastColor, setToastColor] = useState("green");
-    const [showToast, setShowToast] = useState(false);
     const [message, setMessage] = useState({});
     const [messages, setMessages] = useState([]);
     const [emojiPicker, setEmojiPicker] = useState(false);
@@ -96,9 +94,9 @@ function ChatContainer() {
     }
     const handleImageSelect = (e) => {
         if (e.target.files[0]) {
-            setShowToast(true);
-            setToastData(`${e.target.files[0].name} uploaded`);
-            setToastColor("green")
+            dispatch(toastOpen(true))
+            dispatch(toastData(`${e.target.files[0].name} uploaded`))
+            dispatch(toastColor("green"))
             setImage(e.target.files[0]);
         }
     }
@@ -108,9 +106,9 @@ function ChatContainer() {
         let mess = message;
         mess.time = new Date().getTime().toString();
         if (image) {
-            setShowToast(true);
-            setToastData("Uploading Image");
-            setToastColor("green")
+            dispatch(toastOpen(true))
+            dispatch(toastData("Uploading Image"))
+            dispatch(toastColor("green"))
             const uploadTask = storage.ref(`images/${mess.time}.png`).put(image);
             uploadTask.on(
                 "state_changed",
@@ -137,7 +135,7 @@ function ChatContainer() {
                             scroll.current = true;
                             setMessage({});
                             setMessages(msg);
-                            setShowToast(false);
+                            dispatch(toastOpen(false))
                             setImage(null);
                         });
                 }
@@ -160,8 +158,8 @@ function ChatContainer() {
     }
     return (
         <>
-            {username}
-            <Chat toastColor={toastColor} setToastColor={setToastColor} toastData={toastData} setToastData={setToastData} setLoginModalShow={setLoginModalShow} setShowToast={setShowToast} showToast={showToast} loginModalShow={loginModalShow} setSignupModalShow={setSignupModalShow} signupModalShow={signupModalShow} handleImageSelect={handleImageSelect} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} handleSubmit={handleSubmit} msgBox={msgBox} emojiPicker={emojiPicker} setEmojiPicker={setEmojiPicker} message={message} setMessage={setMessage} delMsg={delMsg} likeMsg={likeMsg} />
+            {userId}
+            <Chat setLoginModalShow={setLoginModalShow} loginModalShow={loginModalShow} setSignupModalShow={setSignupModalShow} signupModalShow={signupModalShow} handleImageSelect={handleImageSelect} messages={messages} msgEnd={msgEnd} content={content} handleChange={handleChange} handleSubmit={handleSubmit} msgBox={msgBox} emojiPicker={emojiPicker} setEmojiPicker={setEmojiPicker} message={message} setMessage={setMessage} delMsg={delMsg} likeMsg={likeMsg} />
         </>
     )
 }

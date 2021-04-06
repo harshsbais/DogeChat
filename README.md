@@ -8,18 +8,46 @@
 
   
 
-This is a Messenger App, made with react.  
+This is a Messenger App, made with react with Firebase as backend.  
 
-Take chatting to the moon **🚀**
+Features include:- 
+* Fully Anonymous Authentication
+* Sending Images
+* Liking Messages
+* Deleting own messages
+
+With the power of Doge take chatting to the moon **🚀**
 
 Here is the link to the deployed app :- https://doge-chat.netlify.app/
 
+## Dependencies 
+* Bootstrap:- CSS Framework for Styling
+* Redux:- State management Library for Javscript Apps. Here used to open various auth modals, toasts and removing prop drilling
+* SFCookies:- Gives react projects access to browser cookies. Here used to store UserID, Username, Password of the user in the cookie.
 
 
-  
+## Contributing
 
-  
+### Setting-up the React project 
+* Download and install Git.
+* Fork the Repository.
+* Clone the repository to your local machine `$ git clone https://github.com/<your-github-username>/DogeChat.git`
+* Change directory to DogeChat `$ cd DogeChat`
+* Clone the repository to your local machine `$ git clone https://github.com/<your-github-username>/DogeChat.git`
+* Change directory to JagratiWebApp `$ cd DogeChat`
+* Add a reference to the original repository  
+   `$ git remote add upstream https://github.com/harshsbais/DogeChat.git`
+* `cd DogeChat`
+* `npm i`
+* `npm start`
 
+### Contributing Guidelines 
+  * Feel free to open an issue to report a bug or request a new feature.
+  * Before starting to work on an issue, comment on that issue that you want to work on this and then only start to code.
+  * Create a new branch with a related name of the motive i.e. bug/refactor/feature and commit your changes in that branch only.  
+  * Send a pull request anytime :)  
+
+ 
 ## Supported Platforms
 
   
@@ -28,10 +56,6 @@ This app can be built on any platform. It can be Windows, linux , MacOS or any o
 
   
 
-
-## Connect with me
-
-  <a href='https://www.linkedin.com/in/harshsbais/'><img alt="linkedin" src="https://www.flaticon.com/svg/vstatic/svg/1384/1384046.svg?token=exp=1615707133~hmac=78daac567773ad811863f3796937cc6e" height='30px'/></a>                  <a href='https://twitter.com/harshsbais/'><img alt="twitter" src="https://image.flaticon.com/icons/png/512/23/23931.png" height='30px'/></a>      <a href='mailto:harshsbais5@gmail.com'><img alt="twitter" src="https://www.flaticon.com/svg/vstatic/svg/732/732026.svg?token=exp=1615707223~hmac=0351c92d905320b313267dda66ab6814" height='30px'/></a>
 
 ## Show your support
 
