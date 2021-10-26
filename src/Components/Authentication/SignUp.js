@@ -44,16 +44,16 @@ function SignUp() {
                 <Form onSubmit={handleSubmit} style={{ color: "white", opacity: "87%" }}>
                     <center><h1 className="mb-5">Welcome to Doge Chat</h1></center>
                     <label htmlFor='user' style={{ margin: '20px 20px' }}>Username</label>
-                    <input autocomplete="off" className="float-right mt-2" name='username' style={{ width: "45%" }} value={username} onChange={setUserInfo} />
+                    <input required autocomplete="off" className="float-right mt-2" name='username' style={{ width: "45%" }} value={username} onChange={setUserInfo} />
                     <br />
                     <label htmlFor='user' style={{ margin: '20px 20px' }}>Password</label>
-                    <input autocomplete="off" type="password" className="float-right" name='password' style={{ width: "45%" }} value={password} onChange={setUserInfo} />
+                    <input required autocomplete="off" type="password" className="float-right" name='password' style={{ width: "45%" }} value={password} onChange={setUserInfo} />
                     <br />
                     <label htmlFor='user' style={{ margin: '20px 20px' }}>Confirm Password</label>
-                    <input autocomplete="off" type="password" className="float-right" name='password2' style={{ width: "45%" }} value={password2} onChange={setUserInfo} />
+                    <input required autocomplete="off" type="password" className="float-right" name='password2' style={{ width: "45%" }} value={password2} onChange={setUserInfo} />
                     <br />
                     <span><label>Remember Me?</label></span>
-                    <span style={{ margin: "7px 10px" }}><input type="checkbox" onChange={() => setUserData({ ...userData, "remember": !remember })} defaultChecked={remember} /></span>
+                    <span style={{ margin: "7px 10px" }}><input required type="checkbox" onChange={() => setUserData({ ...userData, "remember": !remember })} defaultChecked={remember} /></span>
                     <button className="ml-3 mt-1 float-right" style={{ background: 'none', color: 'white', border: 'none' }}><i className="fa fa-arrow-right"></i></button>
                 </Form>
             </Modal.Body>
